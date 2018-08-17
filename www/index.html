@@ -1,44 +1,57 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-  <script src="components/loader.js"></script>
-  <script src="lib/angular/angular.min.js"></script>
-  <script src="lib/onsenui/js/onsenui.min.js"></script>
-  <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
+    <!-- yahoo map -->
+    <script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-"></script>
+    <script type="text/javascript" charset="utf-8" src="yahoomap.js"></script>
+    
+    <!-- database -->
+    <script type="text/javascript" charset="utf-8" src="database.js"></script>
 
-  <link rel="stylesheet" href="components/loader.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-  <link rel="stylesheet" href="css/style.css">
+    <!-- google map -->
+    <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/directions/json"></script>
+    <script type="text/javascript" charset="utf-8" src="googlemap.js"></script>
+    
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+     ons.bootstrap()
+        .controller('HelloController', function() {
+            this.world = 'World';
+        });
+     ons.ready(function() {
+         console.log("Onsen UI is ready!");
+     });
+    </script>
+  </head>
+  <body>
+    <ons-page ng-controller="HelloController as hello">
+      <div class="content" style="margin: 10px;">
+        <div id="map" style="width:350hw; height:300px"></div>
+        <img width="200" height="200" src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-&route=35.68233286004894,139.76649043148458,35.615173782469064,139.76584670132092|width=200&height=200">
 
-  <script>
-    ons.bootstrap()
-      .controller('HelloController', function() {
-        this.world = 'World';
-      });
-    ons.ready(function() {
-      console.log("Onsen UI is ready!");
-    });
-  </script>
-</head>
-<body>
-  <ons-page ng-controller="HelloController as hello">
-    <ons-toolbar>
-      <div class="center">Introduction</div>
-    </ons-toolbar>
-
-    <div class="content" style="margin: 10px;">
-      <p>What is your name?</p>
-      <p>
-        <ons-input modifier="underbar" ng-model="hello.world" placeholder="Your name" float></ons-input>
-      </p>
-      <p>
-        Hello, {{ hello.world || 'stranger' }}!
-      </p>
-    </div>
-  </ons-page>
-</body>
+        <input type="button" value="出発点に設定" onclick="setCoodinates(startCoordinates)">
+        <input type="button" value="到着点に設定" onclick="setCoodinates(goalCoordinates)">
+        <div id="namelist"></div>
+        <script type="text/javascript">
+         navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError, getPositionOptions);
+         var md = new MyDatabase("NameTable");
+         var gm = new GoogleMap();
+         md.show();
+        </script>
+        <input type="button" value="Insert" onclick="md.resister()">
+        <a href="https://maps.googleapis.com/maps/api/directions/json?origin=%E6%9D%B1%E4%BA%AC%E9%A7%85&destination=%E6%B5%85%E8%8D%89%E9%A7%85&key=AIzaSyDFDIYBco398B-xvcJ9ND0ENWlk1vifgPs" target="_blank">Google test</a>
+        <input type="button" value="getJson" onclick="gm.getJson()">
+      </div>
+    </ons-page>
+  </body>
 </html>
