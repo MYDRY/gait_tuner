@@ -64,11 +64,13 @@ YahooMap.prototype = {
 
     setStartPosition: function() {
         console.log("setStartPosition");
+        alert("出発点を設定しました。");
         this.startPosition = this.ymap.getCenter();
     },
 
     setGoalPosition: function() {
         console.log("setGoalPosition");
+        alert("到着点を設定しました。");
         this.goalPosition = this.ymap.getCenter();
     },
 
@@ -81,7 +83,7 @@ YahooMap.prototype = {
             alert("距離を計測します。");            
             gm.getJson(this.startPosition.toString(), this.goalPosition.toString());
             var distance = gm.getDistance();
-            alert("The distance is " + distance + " [m].");
+            alert("距離は" + distance + " [m]です。");
         }
     }
 };
