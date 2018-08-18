@@ -1,12 +1,15 @@
 var GoogleMap = (function() {
     var GoogleMap = function() {
-        this._json_data = null;
+        if (!(this instanceof GoogleMap)) {
+            return new GoogleMap();
+        }
+        
+        this.json_data = null;
     }
 
     var p = GoogleMap.prototype
 
     p.getDistance = function() {
-        console.log(this.json_data == null)
         var distance = this.json_data.routes[0].legs[0].distance.value;
         console.log("The distance is " + distance + " [m].");
     }
@@ -17,6 +20,9 @@ var GoogleMap = (function() {
             if(req.readyState == 4 && req.status == 200){
                 this.json_data = JSON.parse(req.responseText);
                 console.log("JSON data chatched");
+                console.log(this.json_data);
+                var distance = this.json_data.routes[0].legs[0].distance.value;
+                console.log("The distance is " + distance + " [m].");
             }
         };
         req.open("GET",
