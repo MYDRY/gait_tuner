@@ -38,15 +38,15 @@
       <div class="content" style="margin: 10px;">
         <div id="map" style="width:350hw; height:300px"></div>
         <!-- <img width="200" height="200" src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-&route=35.68233286004894,139.76649043148458,35.615173782469064,139.76584670132092|width=200&height=200"><br> -->
-
-        <input type="button" value="出発点に設定" onclick="setCoodinates(startCoordinates)"><br>
-        <input type="button" value="到着点に設定" onclick="setCoodinates(goalCoordinates)"><br>
-        <div id="namelist"></div>
         <script type="text/javascript">
          var ym = new YahooMap();
          var md = new MyDatabase("NameTable");
          var gm = new GoogleMap();
         </script>
+        <input type="button" value="出発点に設定" onclick="ym.setStartPosition()"><br>
+        <input type="button" value="到着点に設定" onclick="ym.setGoalPosition()"><br>
+        <input type="button" value="距離を計測" onclick="ym.calcDistance()"><br>
+        <div id="namelist"></div>
         <input type="button" value="getCenter" onclick="ym.getCenter()"><br>
         <input type="button" value="showNames" onclick="md.show()"><br>
         <input type="button" value="Insert" onclick="md.resister()">
