@@ -15,14 +15,13 @@ var GoogleMap = (function() {
     }
 
     p.getJson = function() {
+        var self = this;
         var req = new XMLHttpRequest();
         req.onreadystatechange = function() {
             if(req.readyState == 4 && req.status == 200){
-                this.json_data = JSON.parse(req.responseText);
+                self.json_data = JSON.parse(req.responseText);
                 console.log("JSON data chatched");
-                console.log(this.json_data);
-                var distance = this.json_data.routes[0].legs[0].distance.value;
-                console.log("The distance is " + distance + " [m].");
+                console.log(self.json_data);
             }
         };
         req.open("GET",
