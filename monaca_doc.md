@@ -12,7 +12,7 @@ git と連携するためにも、 Monaca CLI を利用します。
    
 3. このリポジトリをクローンし、中に入る
    ```bash
-   git clone git@github.com:SosysPBL2018/gait_tuner.git;cd gait_tuner
+   git clone git@github.com:MyDry/gait_tuner.git
    ```
    
 4. monaca にログイン (Web上でアカウント作成を済ませておくこと)
