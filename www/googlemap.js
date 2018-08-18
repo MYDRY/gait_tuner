@@ -1,20 +1,21 @@
-var GoogleMap = (function() {
-    var GoogleMap = function() {
+function GoogleMap() {
+    this.init();
+}
+
+GoogleMap.prototype = {
+    init: function() {
         if (!(this instanceof GoogleMap)) {
             return new GoogleMap();
         }
-        
         this.json_data = null;
-    }
+    },
 
-    var p = GoogleMap.prototype
-
-    p.getDistance = function() {
+    getDistance: function() {
         var distance = this.json_data.routes[0].legs[0].distance.value;
         console.log("The distance is " + distance + " [m].");
-    }
+    },
 
-    p.getJson = function() {
+    getJson: function() {
         var self = this;
         var req = new XMLHttpRequest();
         req.onreadystatechange = function() {
@@ -31,6 +32,4 @@ var GoogleMap = (function() {
                  + "key=AIzaSyDFDIYBco398B-xvcJ9ND0ENWlk1vifgPs", false);
         req.send(null);
     }
-
-    return GoogleMap;
-})()
+};
