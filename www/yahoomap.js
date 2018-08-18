@@ -4,9 +4,20 @@ function YahooMap() {
 
 YahooMap.prototype = {
     init: function() {
-        this.ymap = new Y.Map("map");
-        this.centerMark = new Y.CenterMarkControl();
-        this.searchBox = new Y.SearchControl();
+        console.log(YahooMap.prototype.a);
+        this.ymap = new Y.Map("map", {
+            configure: {
+                mapType: Y.Map.TYPE.STANDARD,
+                wheatherOverlay: true,
+                continuousZoom: true
+            }
+        });
+        this.currentPos = this.getInitialPosition();
+        this.ymap.bind('dblclick', function(latlng) {
+            confirm(latlng.toString());
+        });
+        this.ymap.addControl(new Y.CenterMarkControl());
+        this.ymap.addControl(new Y.SearchControl());
         this.getPositionOptions = {
             enableHighAccuracy: true,
             timeout: 5000,
@@ -15,31 +26,31 @@ YahooMap.prototype = {
         this.drawMap();
     },
 
+    getInitialPosition: function() {
+        var initialPos = new Y.LatLng(35.66572, 139.73100); // TOKYO
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            initialPos = new Y.LatLng(pos.coords.latitude, pos.coords.longitude);
+        }, GoogleMap.prototype.getPositionError, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        });
+        return initialPos;
+    },
+    
     drawMap: function() {
-        this.ymap.drawMap(new Y.LatLng(35.66572, 139.73100), 17, Y.LayerSetId.NORMAL);
+        this.ymap.drawMap(this.currentPos, 17, Y.LayerSetId.NORMAL);
     },
     
     getPositionSuccess: function(pos) {
         var crd = pos.coords;
-        ymap = new Y.Map("map", {
-            configure: {
-                mapType: Y.Map.TYPE.STANDARD,
-                wheatherOverlay: true,
-                continuousZoom: true
-            }
-        });
-        ymap.bind('dblclick', function(latlng) {
-            confirm(latlng.toString());
-        });
-        ymap.addControl(this.centerMark);
-        ymap.addControl(this.searchBox);
         ymap.drawMap(new Y.LatLng(crd.latitude, crd.longitude),
                      17,
                      Y.LayerSetId.NORMAL);
     },
     
     getPositionError: function(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
+        console.warn("ERROR(" + err.code + ": " + err.message);
     },
     
     setCoodinates: function(crd) {
