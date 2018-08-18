@@ -79,7 +79,9 @@ YahooMap.prototype = {
             alert("到着点を設定してください。");
         } else {
             alert("距離を計測します。");            
-            ;
+            gm.getJson(this.startPosition.toString(), this.goalPosition.toString());
+            var distance = gm.getDistance();
+            alert("The distance is " + distance + " [m].");
         }
     }
 };
