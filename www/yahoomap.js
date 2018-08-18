@@ -4,7 +4,6 @@ function YahooMap() {
 
 YahooMap.prototype = {
     init: function() {
-        console.log(YahooMap.prototype.a);
         this.ymap = new Y.Map("map", {
             configure: {
                 mapType: Y.Map.TYPE.STANDARD,
@@ -12,30 +11,30 @@ YahooMap.prototype = {
                 continuousZoom: true
             }
         });
-        this.currentPos = this.getInitialPosition();
         this.ymap.bind('dblclick', function(latlng) {
             confirm(latlng.toString());
         });
         this.ymap.addControl(new Y.CenterMarkControl());
         this.ymap.addControl(new Y.SearchControl());
-        this.getPositionOptions = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-        };
-        this.drawMap();
+        this.drawInitialMap();
     },
 
-    getInitialPosition: function() {
-        var initialPos = new Y.LatLng(35.66572, 139.73100); // TOKYO
+    drawInitialMap: function() {
+        var self = this;
+        var defaultPos = new Y.LatLng(35.66572, 139.73100); // TOKYO
         navigator.geolocation.getCurrentPosition(function(pos) {
-            initialPos = new Y.LatLng(pos.coords.latitude, pos.coords.longitude);
-        }, GoogleMap.prototype.getPositionError, {
+            console.log("Success to get cuurent position.");
+            self.currentPos = new Y.LatLng(pos.coords.latitude, pos.coords.longitude);
+            self.drawMap();
+        }, function(err) {
+            console.warn("Failue to get cuurent position.");
+            self.currentPos = defaultPos;
+            self.drawMap();
+        }, {
             enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 0
         });
-        return initialPos;
     },
     
     drawMap: function() {
