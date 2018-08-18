@@ -43,6 +43,7 @@
          var md = new MyDatabase("NameTable");
          var gm = new GoogleMap();
         </script>
+        <input type="button" value="初期位置に戻す" onclick="ym.drawInitialMap()"><br>
         <input type="button" value="出発点に設定" onclick="ym.setStartPosition()"><br>
         <input type="button" value="到着点に設定" onclick="ym.setGoalPosition()"><br>
         <input type="button" value="距離を計測" onclick="ym.calcDistance(gm)"><br>
