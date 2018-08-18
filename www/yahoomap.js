@@ -1,5 +1,5 @@
 function YahooMap() {
-    this.init();
+    YahooMap.prototype.init();
 }
 
 YahooMap.prototype = {
@@ -12,6 +12,7 @@ YahooMap.prototype = {
             timeout: 5000,
             maximumAge: 0
         };
+        this.drawMap();
     },
 
     drawMap: function() {
@@ -20,11 +21,7 @@ YahooMap.prototype = {
     
     getPositionSuccess: function(pos) {
         var crd = pos.coords;
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
-        this.ymap = new Y.Map("map", {
+        ymap = new Y.Map("map", {
             configure: {
                 mapType: Y.Map.TYPE.STANDARD,
                 wheatherOverlay: true,
@@ -34,8 +31,8 @@ YahooMap.prototype = {
         ymap.bind('dblclick', function(latlng) {
             confirm(latlng.toString());
         });
-        ymap.addControl(centerMark);
-        ymap.addControl(searchBox);
+        ymap.addControl(this.centerMark);
+        ymap.addControl(this.searchBox);
         ymap.drawMap(new Y.LatLng(crd.latitude, crd.longitude),
                      17,
                      Y.LayerSetId.NORMAL);
@@ -49,5 +46,9 @@ YahooMap.prototype = {
         navigator.geolocation.getCurrentPosition(function(pos) {
             crd = pos.coords;
         }, YahooMap.prototype.getPositionError, YahooMap.prototype.getPositionOptions);
+    },
+
+    getCenter: function() {
+        alert(this.ymap.getCenter());
     }
 };

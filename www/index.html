@@ -44,13 +44,9 @@
         <div id="namelist"></div>
         <script type="text/javascript">
          var ym = new YahooMap();
-         window.onload = function(){
-             ym.drawMap();
-         }
-
          var md = new MyDatabase("NameTable");
          var gm = new GoogleMap();
-         navigator.geolocation.getCurrentPosition(ym.getPositionSuccess, ym.getPositionError, ym.getPositionOptions);
+         /* navigator.geolocation.getCurrentPosition(ym.getPositionSuccess, ym.getPositionError, ym.getPositionOptions); */
          md.show();
         </script>
         <input type="button" value="getCenter" onclick="ym.getCenter()"><br>
