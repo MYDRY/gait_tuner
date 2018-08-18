@@ -11,7 +11,7 @@ YahooMap.prototype = {
     },
 
     initMap: function(name) {
-       var map = new Y.Map("map", {
+        var map = new Y.Map("map", {
             configure: {
                 mapType: Y.Map.TYPE.STANDARD,
                 wheatherOverlay: true,
@@ -77,13 +77,15 @@ YahooMap.prototype = {
     calcDistance: function(gm) {
         if (this.startPosition == null) {
             alert("出発点を設定してください。");
-        } else if (this.goalPosition == null) {
-            alert("到着点を設定してください。");
-        } else {
-            alert("距離を計測します。");            
-            gm.getJson(this.startPosition.toString(), this.goalPosition.toString());
-            var distance = gm.getDistance();
-            alert("距離は" + distance + " [m]です。");
+            return;
         }
+        if (this.goalPosition == null) {
+            alert("到着点を設定してください。");
+            return;
+        }
+        alert("距離を計測します。");            
+        gm.getJson(this.startPosition.toString(), this.goalPosition.toString());
+        var distance = gm.getDistance();
+        alert("距離は" + distance + " [m]です。");
     }
 };
