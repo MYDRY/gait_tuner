@@ -1,6 +1,9 @@
 # gait_tuner
 Hack U 2018 FUKUOKA 案➀
 
+↓ monaca の事始め  
+[monaca_doc.md](https://github.com/SosysPBL2018/gait_tuner/blob/master/monaca_doc.md)
+
 ## 概要
 到着時間に間に合わせるために  
 走るべきか、歩いても大丈夫か、はたまた諦めて先方に連絡をするべきかを  
