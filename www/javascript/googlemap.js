@@ -1,6 +1,7 @@
 function GoogleMap() {
     this.init();
     this.setInitialPosition();
+    this.centerMark.setMap(this.map);
 }
 
 GoogleMap.prototype = {
@@ -21,13 +22,35 @@ GoogleMap.prototype = {
         navigator.geolocation.getCurrentPosition(function(pos) {
             console.log("Success to get current position.");
             self.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            self.addCenterMark();
         }, function(err) {
             console.warn("Failue to get current position.");
             self.map.setCenter(defaultPos);
+            self.addCenterMark();
         }, {
             enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 0
+        });
+    },
+
+    addCenterMark: function() {
+        var self = this;
+        var centerMark = new google.maps.Marker({
+            map: self.map,
+            position: self.map.getCenter(),
+            draggable: true
+        });
+        centerMark.setMap(this.map);
+        google.maps.event.addListener(this.map, 'center_changed', function() {
+            var pos = self.map.getCenter();
+            centerMark.setPosition(pos);
+        });
+        google.maps.event.addListener(centerMark, 'dragend', function() {
+            self.map.panTo(centerMark.position);
+        });
+        google.maps.event.addListener(centerMark, 'dblclick', function() {
+            alert("Hello!!!!!!");
         });
     },
     
