@@ -44,9 +44,10 @@ GoogleMap.prototype = {
             if(req.readyState == 4 && req.status == 200){
                 self.json_data = JSON.parse(req.responseText);
                 console.log("JSON data chatched");
-                console.log(self.json_data);
             }
         };
+        origin_coord = origin.split(" ");
+        destination_coord = destination.split(" ");
         req.open("GET",
                  "https://maps.googleapis.com/maps/api/directions/json?"
                  + "origin=" + origin + "&"
@@ -65,5 +66,22 @@ GoogleMap.prototype = {
         this.goalPosition = this.map.getBounds().getCenter();
         alert("到着点を設定しました。");
         console.log("goalPosition: " + this.goalPosition.toString());
+    },
+
+    calcDistance: function() {
+        if (this.startPosition == null) {
+            alert("出発点を設定してください。");
+            return;
+        }
+        if (this.goalPosition == null) {
+            alert("到着点を設定してください。");
+            return;
+        }
+        alert("距離を計測します。");
+        var originString = this.startPosition.lat() + "," + this.startPosition.lng();
+        var destinationString = this.goalPosition.lat() + "," + this.goalPosition.lng();
+        this.getJson(originString, destinationString);
+        var distance = this.getDistance();
+        alert("距離は" + distance + " [m]です。");
     }
 };

@@ -66,6 +66,7 @@ YahooMap.prototype = {
         console.log("setStartPosition");
         alert("出発点を設定しました。");
         this.startPosition = this.ymap.getCenter();
+        document.write(this.setStartPosition);
     },
 
     setGoalPosition: function() {
