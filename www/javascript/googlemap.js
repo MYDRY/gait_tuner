@@ -82,13 +82,11 @@ GoogleMap.prototype = {
     setStartPosition: function() {
         this.startPosition = this.map.getBounds().getCenter();
         alert("出発点を設定しました。");
-        console.log("startPosition: " + this.startPosition.toString());
     },
 
     setGoalPosition: function() {
         this.goalPosition = this.map.getBounds().getCenter();
         alert("到着点を設定しました。");
-        console.log("goalPosition: " + this.goalPosition.toString());
     },
 
     calcDistance: function() {
