@@ -45,16 +45,14 @@
         <div id="time"></div>
         <div id="map" style="width:350hw; height:300px"></div>
         <!-- <img width="200" height="200" src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-&route=35.68233286004894,139.76649043148458,35.615173782469064,139.76584670132092|width=200&height=200"><br> -->
-        <input type="button" value="初期位置に戻す" onclick="ym.drawInitialMap()"><br>
-        <input type="button" value="出発点に設定" onclick="ym.setStartPosition()"><br>
-        <input type="button" value="到着点に設定" onclick="ym.setGoalPosition()"><br>
-        <input type="button" value="距離を計測" onclick="ym.calcDistance(gm)"><br>
-        <div id="namelist"></div>
-        <input type="button" value="showNames" onclick="md.show()"><br>
+        <input type="button" value="初期位置に戻す" onclick="ym.drawInitialMap()">
+        <input type="button" value="出発点に設定" onclick="ym.setStartPosition()">
+        <input type="button" value="到着点に設定" onclick="ym.setGoalPosition()">
+        <input type="button" value="距離を計測" onclick="ym.calcDistance(gm)">
+        <hr>
         <input type="button" value="Insert" onclick="md.resister()">
-        <a href="https://maps.googleapis.com/maps/api/directions/json?origin=%E6%9D%B1%E4%BA%AC%E9%A7%85&destination=%E6%B5%85%E8%8D%89%E9%A7%85&key=AIzaSyDFDIYBco398B-xvcJ9ND0ENWlk1vifgPs" target="_blank">Google test</a>
-        <input type="button" value="getJson" onclick="gm.getJson('Tokyo', 'Osaka')">
-        <input type="button" value="getDistance" onclick="gm.getDistance()">
+        <input type="button" value="showNames" onclick="md.show()">
+        <div id="namelist"></div>
         <hr>
         <form name="target_time_form">
           <input type="time" name="target_time" value="12:00">
