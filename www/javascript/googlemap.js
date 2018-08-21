@@ -11,6 +11,8 @@ GoogleMap.prototype = {
         this.map = new google.maps.Map(document.getElementById("map"), { zoom: 16 });
         this.currentPos;
         this.json_data = null;
+        this.startPosition = null;
+        this.goalPosition = null;
     },
 
     setInitialPosition: function() {
@@ -51,5 +53,17 @@ GoogleMap.prototype = {
                  + "destination=" + destination + "&"
                  + "key=AIzaSyDFDIYBco398B-xvcJ9ND0ENWlk1vifgPs", false);
         req.send(null);
+    },
+
+    setStartPosition: function() {
+        this.startPosition = this.map.getBounds().getCenter();
+        alert("出発点を設定しました。");
+        console.log("startPosition: " + this.startPosition.toString());
+    },
+
+    setGoalPosition: function() {
+        this.goalPosition = this.map.getBounds().getCenter();
+        alert("到着点を設定しました。");
+        console.log("goalPosition: " + this.goalPosition.toString());
     }
 };
