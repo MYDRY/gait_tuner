@@ -1,6 +1,6 @@
-function GoogleMap(id) {
+function GoogleMap() {
     this.init();
-    this.drawMap(id);
+    this.setInitialPosition();
 }
 
 GoogleMap.prototype = {
@@ -8,17 +8,24 @@ GoogleMap.prototype = {
         if (!(this instanceof GoogleMap)) {
             return new GoogleMap();
         }
-        this.map;
+        this.map = new google.maps.Map(document.getElementById("map"), { zoom: 16 });
+        this.currentPos;
         this.json_data = null;
     },
 
-    drawMap: function(id) {
-        this.map = new google.maps.Map(document.getElementById(id), {
-            center: {
-                lat: 34.7019399,
-                lng: 135.51002519999997
-            },
-            zoom: 19
+    setInitialPosition: function() {
+        var self = this;
+        var defaultPos = new google.maps.LatLng(35.66572, 139.73100); // TOKYO
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            console.log("Success to get current position.");
+            self.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+        }, function(err) {
+            console.warn("Failue to get current position.");
+            self.map.setCenter(defaultPos);
+        }, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
         });
     },
     
