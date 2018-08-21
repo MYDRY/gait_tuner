@@ -19,7 +19,6 @@ GoogleMap.prototype = {
 
         this.latestResponse = null;
         this.currentPos = null;
-        this.json_data = null;
         this.startPosition = null;
         this.goalPosition = null;
     },
@@ -69,25 +68,6 @@ GoogleMap.prototype = {
         return distance;
     },
     
-    getJson: function(origin, destination) {
-        var self = this;
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function() {
-            if(req.readyState == 4 && req.status == 200){
-                self.json_data = JSON.parse(req.responseText);
-                console.log("JSON data chatched");
-            }
-        };
-        origin_coord = origin.split(" ");
-        destination_coord = destination.split(" ");
-        req.open("GET",
-                 "https://maps.googleapis.com/maps/api/directions/json?"
-                 + "origin=" + origin + "&"
-                 + "destination=" + destination + "&"
-                 + "key=AIzaSyDFDIYBco398B-xvcJ9ND0ENWlk1vifgPs", false);
-        req.send(null);
-    },
-
     setStartPosition: function() {
         this.startPosition = this.map.getBounds().getCenter();
         alert("出発点を設定しました。");
@@ -98,7 +78,7 @@ GoogleMap.prototype = {
         alert("到着点を設定しました。");
     },
 
-    calcDistance: function() {
+    getRoute: function() {
         if (this.startPosition == null) {
             alert("出発点を設定してください。");
             return;
@@ -107,15 +87,8 @@ GoogleMap.prototype = {
             alert("到着点を設定してください。");
             return;
         }
-        alert("距離を計測します。");
-        var originString = this.startPosition.lat() + "," + this.startPosition.lng();
-        var destinationString = this.goalPosition.lat() + "," + this.goalPosition.lng();
-        this.getJson(originString, destinationString);
-        var distance = this.getDistance();
-        alert("距離は" + distance + " [m]です。");
-    },
+        alert("経路を検索します。");
 
-    getRoute: function() {
         var request = {
             origin: this.startPosition,
             destination: this.goalPosition,
@@ -125,10 +98,12 @@ GoogleMap.prototype = {
             avoidHighways: false,
             avoidTolls: false
         };
+
         var self = this;
         this.directionsService.route(request, function(response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
                 self.latestResponse = response;
+                alert("距離は" + response.routes[0].legs[0].distance.value + " [m]です。");
                 self.directionsDisplay.setDirections(response);
             }
         });
