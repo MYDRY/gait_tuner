@@ -1,8 +1,8 @@
-function GaitTuner() {
+function TimeManager() {
     this.init();
 }
 
-GaitTuner.prototype = {
+TimeManager.prototype = {
     init: function() {
         this.defaultWalkingSpeed = 1.2;
         this.defaultJoggingSpeed = 2.5;

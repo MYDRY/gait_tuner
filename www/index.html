@@ -56,13 +56,13 @@
         <hr>
         <form name="target_time_form">
           <input type="time" name="target_time" value="12:00">
-          <input type="button" name="submit" value="確定する" onclick="gt.showTargetTime()">
+          <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">
         </form>
         <div id="target_time_shower"></div>
       </div>
       <script type="text/javascript">
        var date_field = document.getElementById("time")
-       var gt = new GaitTuner();
+       var tm = new TimeManager();
        date_field.innerHTML = gt.getCurrentTime();
        var ym = new YahooMap();
        var md = new MyDatabase("NameTable");
