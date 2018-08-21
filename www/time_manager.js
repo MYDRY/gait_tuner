@@ -4,9 +4,11 @@ function TimeManager() {
 
 TimeManager.prototype = {
     init: function() {
-        this.defaultWalkingSpeed = 1.2;
-        this.defaultJoggingSpeed = 2.5;
-        this.defaultRunningSpeed = 5.0;
+        this.defaultSpeed = {
+            walk: 1.2,
+            jog:  2.5,
+            run:  5.0
+        };
         this.remainingTime = 0;
     },
 

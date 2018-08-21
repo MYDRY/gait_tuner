@@ -62,6 +62,8 @@
           <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">
         </form>
         <div id="target_time_shower"></div>
+        <hr>
+        <input type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
       </div>
       <script type="text/javascript">
        var date_field = document.getElementById("time")
