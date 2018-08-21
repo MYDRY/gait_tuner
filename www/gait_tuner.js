@@ -4,6 +4,10 @@ function GaitTuner() {
 
 GaitTuner.prototype = {
     init: function() {
+        this.defaultWalkingSpeed = 1.2;
+        this.defaultJoggingSpeed = 2.5;
+        this.defaultRunningSpeed = 5.0;
+        this.remainingTime = 0;
     },
 
     getCurrentTime: function() {
@@ -27,7 +31,7 @@ GaitTuner.prototype = {
     },
 
     calcRemainingTime: function() {
-        var ramainingTime = this.getTargetTime().getTime() - new Date().getTime();
-        console.log("Remaining time:" + (ramainingTime/1000));
+        this.remainingTime = this.getTargetTime().getTime() - new Date().getTime();
+        console.log("Remaining time:" + (remainingTime/1000));
     }
 };
