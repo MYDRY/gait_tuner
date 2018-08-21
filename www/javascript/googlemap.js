@@ -64,7 +64,7 @@ GoogleMap.prototype = {
     },
     
     getDistance: function() {
-        var distance = this.json_data.routes[0].legs[0].distance.value;
+        var distance = this.latestResponse.routes[0].legs[0].distance.value;
         console.log("The distance is " + distance + " [m].");
         return distance;
     },
@@ -117,8 +117,8 @@ GoogleMap.prototype = {
 
     getRoute: function() {
         var request = {
-            origin: "福岡",
-            destination: "博多",
+            origin: this.startPosition,
+            destination: this.goalPosition,
             travelMode: google.maps.DirectionsTravelMode.WALKING,
             unitSystem: google.maps.DirectionsUnitSystem.METRIC,
             optimizeWaypoints: true,
@@ -129,7 +129,6 @@ GoogleMap.prototype = {
         this.directionsService.route(request, function(response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
                 self.latestResponse = response;
-                console.log(response.routes[0].legs[0].distance.value);
                 self.directionsDisplay.setDirections(response);
             }
         });
