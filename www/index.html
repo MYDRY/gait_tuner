@@ -36,9 +36,13 @@
   <body>
     <ons-page ng-controller="HelloController as hello">
       <div class="content" style="margin: 10px;">
+        <div id="time"></div>
         <div id="map" style="width:350hw; height:300px"></div>
         <!-- <img width="200" height="200" src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-&route=35.68233286004894,139.76649043148458,35.615173782469064,139.76584670132092|width=200&height=200"><br> -->
         <script type="text/javascript">
+         var date_field = document.getElementById("time")
+         var date = new Date();
+         date_field.innerHTML = date;
          var ym = new YahooMap();
          var md = new MyDatabase("NameTable");
          var gm = new GoogleMap();
