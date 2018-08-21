@@ -38,6 +38,7 @@ GoogleMap.prototype = {
         var centerMark = new google.maps.Marker({
             map: self.map,
             position: self.map.getCenter(),
+            animation: google.maps.Animation.DROP,
             draggable: true
         });
         centerMark.setMap(this.map);
