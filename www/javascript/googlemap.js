@@ -1,7 +1,6 @@
 function GoogleMap() {
     this.init();
     this.setInitialPosition();
-    this.centerMark.setMap(this.map);
 }
 
 GoogleMap.prototype = {
