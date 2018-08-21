@@ -8,15 +8,13 @@
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/onsenui/js/onsenui.min.js"></script>
     <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
-    <!-- yahoo map -->
-    <script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-"></script>
-    <script type="text/javascript" charset="utf-8" src="javascript/yahoomap.js"></script>
-    
+
     <!-- database -->
     <script type="text/javascript" charset="utf-8" src="javascript/database.js"></script>
 
     <!-- google map -->
     <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/directions/json"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv80XnUNKsbSj5PALekuXX76V90tmyJVU"></script>
     <script type="text/javascript" charset="utf-8" src="javascript/googlemap.js"></script>
 
     <!-- time manager -->
@@ -43,16 +41,11 @@
     <ons-page ng-controller="HelloController as hello">
       <div class="content" style="margin: 10px;">
         <div id="time"></div>
-        <h2>Yahoo Map</h2>
-        <div id="map" style="width:350hw; height:300px"></div>
-        <!-- <img width="200" height="200" src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-&route=35.68233286004894,139.76649043148458,35.615173782469064,139.76584670132092|width=200&height=200"><br> -->
-        <input type="button" value="初期位置に戻す" onclick="ym.drawInitialMap()">
-        <input type="button" value="出発点に設定" onclick="ym.setStartPosition()">
-        <input type="button" value="到着点に設定" onclick="ym.setGoalPosition()">
-        <input type="button" value="距離を計測" onclick="ym.calcDistance(gm)">
-        <hr>
         <h2>Google Map</h2>
-        <a href="googlemaptest.html" target="_blank">Sample</a>
+        <div id="map" style="width:350hw; height:300px"></div>
+        <input type="button" value="出発点に設定" onclick="gm.setStartPosition()">
+        <input type="button" value="到着点に設定" onclick="gm.setGoalPosition()">
+        <input type="button" value="距離を計測" onclick="gm.calcDistance()">
         <hr>
         <h2>Data Base</h2>
         <input type="button" value="Insert" onclick="md.resister()">
@@ -72,7 +65,6 @@
        var date_field = document.getElementById("time")
        var tm = new TimeManager();
        date_field.innerHTML = tm.getCurrentTime();
-       var ym = new YahooMap();
        var md = new MyDatabase("NameTable");
        var gm = new GoogleMap();
       </script>
