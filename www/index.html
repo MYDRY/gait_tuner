@@ -43,6 +43,7 @@
     <ons-page ng-controller="HelloController as hello">
       <div class="content" style="margin: 10px;">
         <div id="time"></div>
+        <h2>Yahoo Map</h2>
         <div id="map" style="width:350hw; height:300px"></div>
         <!-- <img width="200" height="200" src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-&route=35.68233286004894,139.76649043148458,35.615173782469064,139.76584670132092|width=200&height=200"><br> -->
         <input type="button" value="初期位置に戻す" onclick="ym.drawInitialMap()">
@@ -50,10 +51,15 @@
         <input type="button" value="到着点に設定" onclick="ym.setGoalPosition()">
         <input type="button" value="距離を計測" onclick="ym.calcDistance(gm)">
         <hr>
+        <h2>Google Map</h2>
+        <a href="googlemaptest.html" target="_blank">Sample</a>
+        <hr>
+        <h2>Data Base</h2>
         <input type="button" value="Insert" onclick="md.resister()">
         <input type="button" value="showNames" onclick="md.show()">
         <div id="namelist"></div>
         <hr>
+        <h2>Time Manager</h2>
         <form name="target_time_form">
           <input type="time" name="target_time" value="12:00">
           <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">

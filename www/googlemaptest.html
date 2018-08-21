@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- This stylesheet contains specific styles for displaying
+         the map on this page. Replace it with your own styles as
+         described in the documentation:
+         https://developers.google.com/maps/documentation/javascript/tutorial
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv80XnUNKsbSj5PALekuXX76V90tmyJVU"></script>
+  </head>
+  <body>
+    <div id="sample" style="width: 300px; height: 300px;"></div>
+    <script>
+     var map = new google.maps.Map(document.getElementById('sample'), {
+         center: {
+             lat: 34.7019399,
+             lng: 135.51002519999997
+         },
+         zoom: 19
+     });
+    </script>
+  </body>
+</html>
