@@ -42,14 +42,6 @@
         <div id="time"></div>
         <div id="map" style="width:350hw; height:300px"></div>
         <!-- <img width="200" height="200" src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-&route=35.68233286004894,139.76649043148458,35.615173782469064,139.76584670132092|width=200&height=200"><br> -->
-        <script type="text/javascript">
-         var date_field = document.getElementById("time")
-         var gt = new GaitTuner();
-         date_field.innerHTML = gt.getCurrentTime();
-         var ym = new YahooMap();
-         var md = new MyDatabase("NameTable");
-         var gm = new GoogleMap();
-        </script>
         <input type="button" value="初期位置に戻す" onclick="ym.drawInitialMap()"><br>
         <input type="button" value="出発点に設定" onclick="ym.setStartPosition()"><br>
         <input type="button" value="到着点に設定" onclick="ym.setGoalPosition()"><br>
@@ -63,6 +55,14 @@
         <input type="button" value="getDistance" onclick="gm.getDistance()">
         <hr>
       </div>
+      <script type="text/javascript">
+       var date_field = document.getElementById("time")
+       var gt = new GaitTuner();
+       date_field.innerHTML = gt.getCurrentTime();
+       var ym = new YahooMap();
+       var md = new MyDatabase("NameTable");
+       var gm = new GoogleMap();
+      </script>
     </ons-page>
   </body>
 </html>
