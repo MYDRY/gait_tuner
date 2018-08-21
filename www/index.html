@@ -18,7 +18,10 @@
     <!-- google map -->
     <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/directions/json"></script>
     <script type="text/javascript" charset="utf-8" src="googlemap.js"></script>
-    
+
+    <!-- gait_tuner -->
+    <script type="text/javascript" charset="utf-8" src="gait_tuner.js"></script>
+
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
@@ -41,8 +44,8 @@
         <!-- <img width="200" height="200" src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPWw3MElkZVJEbDVyViZzPWNvbnN1bWVyc2VjcmV0Jng9NjM-&route=35.68233286004894,139.76649043148458,35.615173782469064,139.76584670132092|width=200&height=200"><br> -->
         <script type="text/javascript">
          var date_field = document.getElementById("time")
-         var date = new Date();
-         date_field.innerHTML = date;
+         var gt = new GaitTuner();
+         date_field.innerHTML = gt.getCurrentTime();
          var ym = new YahooMap();
          var md = new MyDatabase("NameTable");
          var gm = new GoogleMap();
@@ -58,6 +61,7 @@
         <a href="https://maps.googleapis.com/maps/api/directions/json?origin=%E6%9D%B1%E4%BA%AC%E9%A7%85&destination=%E6%B5%85%E8%8D%89%E9%A7%85&key=AIzaSyDFDIYBco398B-xvcJ9ND0ENWlk1vifgPs" target="_blank">Google test</a>
         <input type="button" value="getJson" onclick="gm.getJson('Tokyo', 'Osaka')">
         <input type="button" value="getDistance" onclick="gm.getDistance()">
+        <hr>
       </div>
     </ons-page>
   </body>
