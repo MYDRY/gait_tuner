@@ -7,7 +7,7 @@ git と連携するためにも、 Monaca CLI を利用します。
 
 2. monaca をインストール
    ```bash 
-   npm install -g monaca
+   sudo npm install -g monaca
    ```
    
 3. このリポジトリをクローンし、中に入る
