@@ -9,7 +9,16 @@ GoogleMap.prototype = {
             return new GoogleMap();
         }
         this.map = new google.maps.Map(document.getElementById("map"), { zoom: 16 });
-        this.currentPos;
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
+            preserveViewport: false
+        });
+        this.directionsDisplay.setMap(this.map);
+        google.maps.event.addListener(this.directionsDisplay, 'directions_changed', function(){});
+
+        this.latestResponse = null;
+        this.currentPos = null;
         this.json_data = null;
         this.startPosition = null;
         this.goalPosition = null;
@@ -104,5 +113,25 @@ GoogleMap.prototype = {
         this.getJson(originString, destinationString);
         var distance = this.getDistance();
         alert("距離は" + distance + " [m]です。");
+    },
+
+    getRoute: function() {
+        var request = {
+            origin: "福岡",
+            destination: "博多",
+            travelMode: google.maps.DirectionsTravelMode.WALKING,
+            unitSystem: google.maps.DirectionsUnitSystem.METRIC,
+            optimizeWaypoints: true,
+            avoidHighways: false,
+            avoidTolls: false
+        };
+        var self = this;
+        this.directionsService.route(request, function(response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                self.latestResponse = response;
+                console.log(response.routes[0].legs[0].distance.value);
+                self.directionsDisplay.setDirections(response);
+            }
+        });
     }
 };
