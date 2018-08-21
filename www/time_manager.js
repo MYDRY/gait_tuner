@@ -32,6 +32,6 @@ TimeManager.prototype = {
 
     calcRemainingTime: function() {
         this.remainingTime = this.getTargetTime().getTime() - new Date().getTime();
-        console.log("Remaining time:" + (remainingTime/1000));
+        console.log("Remaining time:" + (this.remainingTime/1000));
     }
 };
