@@ -81,6 +81,10 @@ GoogleMap.prototype = {
     selectStartPosition: function() {
         this.startPosition = document.startpointform.startpoint.options[document.startpointform.startpoint.selectedIndex].value;
     },
+    selectGoalPosition: function() {
+        this.goalPosition = document.goalpointform.goalpoint.options[document.goalpointform.goalpoint.selectedIndex].value;
+    },
+
 
     getRoute: function() {
         if (this.startPosition == null) {
