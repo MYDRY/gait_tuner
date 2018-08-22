@@ -14,6 +14,7 @@ GoogleMap.prototype = {
             draggable: true,
             preserveViewport: false
         });
+        this.directionsDisplay.setPanel(document.getElementById("panel"));
         this.directionsDisplay.setMap(this.map);
         google.maps.event.addListener(this.directionsDisplay, 'directions_changed', function(){});
 
