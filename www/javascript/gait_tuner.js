@@ -9,7 +9,8 @@ function judge(distance, remainingTime, defaultSpeed) {
     console.log("runningTime: " + runningTime);
 
     if (walkingTime <= remainingTime) {
-        alert("歩いても間に合うよ");
+        alert("所要時間:"+ Math.round(walkingTime) +"s 歩いても間に合うよ");
+
     } else if (joggingTime <= remainingTime) {
         alert("ジョギングで行けば間に合うよ");
     } else if (runningTime <= remainingTime) {
