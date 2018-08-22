@@ -78,6 +78,10 @@ GoogleMap.prototype = {
         alert("到着点を設定しました。");
     },
 
+    selectStartPosition: function() {
+        this.startPosition = document.startpointform.startpoint.options[document.startpointform.startpoint.selectedIndex].value;
+    },
+
     getRoute: function() {
         if (this.startPosition == null) {
             alert("出発点を設定してください。");
