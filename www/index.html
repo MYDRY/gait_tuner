@@ -62,11 +62,14 @@
         <input type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
       </div>
       <script type="text/javascript">
-       var date_field = document.getElementById("time")
-       var tm = new TimeManager();
-       date_field.innerHTML = tm.getCurrentTime();
-       var md = new MyDatabase("NameTable");
-       var gm = new GoogleMap();
+          setInterval(clock, 1000);
+          var date_field = document.getElementById("time")
+          var tm = new TimeManager();
+          function clock(){
+            date_field.innerHTML = tm.getCurrentTime();
+          }
+          var md = new MyDatabase("NameTable");
+          var gm = new GoogleMap();
       </script>
     </ons-page>
   </body>
