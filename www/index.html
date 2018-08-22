@@ -71,8 +71,8 @@
         <hr>
         <h2>Time Manager</h2>
         <form name="target_time_form">
-          <input type="time" name="target_time" value="12:00">
-          <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">
+          <input type="time" name="target_time" onChange="tm.showTargetTime()">
+         <!-- <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">-->
         </form>
         <div id="target_time_shower"></div>
         <hr>
