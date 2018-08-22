@@ -14,7 +14,7 @@ TimeManager.prototype = {
 
     getCurrentTime: function() {
         var date = new Date();
-        return date.getHours() + ":" + date.getMinutes();
+        return date.getHours() + ":" + ("0"+(date.getMinutes())).slice(-2);
     },
 
     getTargetTime: function() {
