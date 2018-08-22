@@ -18,10 +18,11 @@ TimeManager.prototype = {
     },
 
     getTargetTime: function() {
+        var date = new Date();
         var form = document.forms['target_time_form']
         var target_time = form.target_time.value;
         tmp = target_time.split(":");
-        return new Date(2018, 7, 21, tmp[0], tmp[1]);
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), tmp[0], tmp[1]);
     },
 
     showTargetTime: function() {
