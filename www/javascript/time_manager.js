@@ -20,9 +20,12 @@ TimeManager.prototype = {
     getTargetTime: function() {
         var date = new Date();
         var form = document.forms['target_time_form']
+        var target_date = form.target_date.value;
         var target_time = form.target_time.value;
+        console.log(target_date);
+        td = target_date.split("-");
         tmp = target_time.split(":");
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), tmp[0], tmp[1]);
+        return new Date(td[0], td[1] - 1, td[2], tmp[0], tmp[1]);
     },
 
     showTargetTime: function() {
@@ -30,6 +33,7 @@ TimeManager.prototype = {
         field.innerHTML = this.getTargetTime();
         this.calcRemainingTime();
     },
+
 
     calcRemainingTime: function() {
         this.remainingTime = (this.getTargetTime().getTime() - new Date().getTime()) / 1000;
