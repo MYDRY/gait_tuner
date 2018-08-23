@@ -8,7 +8,12 @@ GoogleMap.prototype = {
         if (!(this instanceof GoogleMap)) {
             return new GoogleMap();
         }
-        this.map = new google.maps.Map(document.getElementById("map"), { zoom: 16 });
+        this.map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 16,
+            mapTypeControl: false,
+            streetViewControl: false,
+            zoomControl: false,
+        });
         this.directionsService = new google.maps.DirectionsService();
         this.directionsDisplay = new google.maps.DirectionsRenderer({
             draggable: true,
