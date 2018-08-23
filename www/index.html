@@ -11,6 +11,7 @@
 
     <!-- database -->
     <script type="text/javascript" charset="utf-8" src="javascript/database.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascript/place_database.js"></script>
 
     <!-- google map -->
     <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/directions/json"></script>
@@ -99,6 +100,7 @@
        function clock(){
            date_field.innerHTML = tm.getCurrentTime();
        }
+       var pdb = new PlaceDB();
        var md = new MyDatabase("NameTable");
        var gm = new GoogleMap();
       </script>
