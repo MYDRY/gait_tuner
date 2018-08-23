@@ -81,9 +81,11 @@ GoogleMap.prototype = {
 
     selectStartPosition: function() {
         this.startPosition = document.startpointform.startpoint.options[document.startpointform.startpoint.selectedIndex].value;
+        alert("出発点を設定しました。");
     },
     selectGoalPosition: function() {
         this.goalPosition = document.goalpointform.goalpoint.options[document.goalpointform.goalpoint.selectedIndex].value;
+        alert("到着点を設定しました。");
     },
 
 
