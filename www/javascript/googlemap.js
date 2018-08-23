@@ -14,6 +14,7 @@ GoogleMap.prototype = {
             draggable: true,
             preserveViewport: false
         });
+        this.directionsDisplay.setPanel(document.getElementById("panel"));
         this.directionsDisplay.setMap(this.map);
         google.maps.event.addListener(this.directionsDisplay, 'directions_changed', function(){});
 
@@ -77,6 +78,14 @@ GoogleMap.prototype = {
         this.goalPosition = this.map.getBounds().getCenter();
         alert("到着点を設定しました。");
     },
+
+    selectStartPosition: function() {
+        this.startPosition = document.startpointform.startpoint.options[document.startpointform.startpoint.selectedIndex].value;
+    },
+    selectGoalPosition: function() {
+        this.goalPosition = document.goalpointform.goalpoint.options[document.goalpointform.goalpoint.selectedIndex].value;
+    },
+
 
     getRoute: function() {
         if (this.startPosition == null) {

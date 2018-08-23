@@ -46,6 +46,23 @@
         <input type="button" value="出発点に設定" onclick="gm.setStartPosition()">
         <input type="button" value="到着点に設定" onclick="gm.setGoalPosition()">
         <input type="button" value="経路を検索" onclick="gm.getRoute()">
+
+        <form name="startpointform">
+          <select name="startpoint" onChange="gm.selectStartPosition()">
+            <option value="">選択してください</option>
+            <option value="博多駅">博多駅</option>
+            <option value="久留米駅">久留米駅</option>
+          </select>
+        </form>
+        <form name="goalpointform">
+          <select name="goalpoint" onChange="gm.selectGoalPosition()">
+            <option value="">選択してください</option>
+            <option value="博多駅">博多駅</option>
+            <option value="久留米駅">久留米駅</option>
+          </select>
+        </form>
+
+
         <hr>
         <h2>Data Base</h2>
         <input type="button" value="Insert" onclick="md.resister()">
@@ -54,19 +71,34 @@
         <hr>
         <h2>Time Manager</h2>
         <form name="target_time_form">
-          <input type="time" name="target_time" value="12:00">
-          <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">
+          <input type="date" name="target_date" onchange="tm.showTargetTime()">
+          <input type="time" name="target_time" onChange="tm.showTargetTime()">
+         <!-- <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">-->
         </form>
         <div id="target_time_shower"></div>
         <hr>
+        <p>歩行速度</p>
+        <form name="speedparaform">
+          <select name="speedpara" onChange="tm.changeSpeedPara()">
+            <option value="">平均</option>
+            <option value="10.0">10m/s</option>
+            <option value="100.0">100m/s</option>
+          </select>
+        </form>
+
         <input type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
+
+        <div id="panel" style="width: 300px;"></div>
       </div>
       <script type="text/javascript">
-       var date_field = document.getElementById("time")
-       var tm = new TimeManager();
-       date_field.innerHTML = tm.getCurrentTime();
-       var md = new MyDatabase("NameTable");
-       var gm = new GoogleMap();
+          setInterval(clock, 1000);
+          var date_field = document.getElementById("time")
+          var tm = new TimeManager();
+          function clock(){
+            date_field.innerHTML = tm.getCurrentTime();
+          }
+          var md = new MyDatabase("NameTable");
+          var gm = new GoogleMap();
       </script>
     </ons-page>
   </body>
