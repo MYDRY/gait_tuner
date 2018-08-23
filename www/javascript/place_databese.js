@@ -37,9 +37,14 @@ PlaceDB.prototype = {
         var len = results.rows.length;
         console.log("data num = " + len);
         for (var i = 0; i < len; ++i) {
-            field.innerHTML +=
+            field.innerHTML =
                 "id: " + results.rows.item(i).id +   ", name: " + results.rows.item(i).name +
                 ", lat: " + results.rows.item(i).lat + ", lng: "+ results.rows.item(i).lng + "<br>";
         }
+    },
+
+    hideList: function() {
+        var field = document.getElementById("placelist");
+        field.innerHTML = "<br>";
     }
 };

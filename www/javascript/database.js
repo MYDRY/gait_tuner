@@ -38,7 +38,7 @@ MyDatabase.prototype = {
         var len = results.rows.length;
         console.log("data num = " + len);
         for (var i = 0; i < len; ++i) {
-            field.innerHTML += "id: " + results.rows.item(i).id + ", name: " + results.rows.item(i).name + "<br>";
+            field.innerHTML = "id: " + results.rows.item(i).id + ", name: " + results.rows.item(i).name + "<br>";
         }
     }
 };
