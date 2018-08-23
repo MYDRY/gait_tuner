@@ -90,13 +90,15 @@ GoogleMap.prototype = {
     
     putStartMarker: function(pos) {
         this.startMarker.setPosition(pos);
-        this.startMarker.setMap(this.map)
+        this.startMarker.setMap(this.map);
+        this.directionsDisplay.setMap(null);
         alert("出発点を設定しました。");
     },
 
     putGoalMarker: function(pos) {
         this.goalMarker.setPosition(pos);
-        this.goalMarker.setMap(this.map)
+        this.goalMarker.setMap(this.map);
+        this.directionsDisplay.setMap(null);
         alert("到着点を設定しました。");
     },
     
@@ -143,6 +145,7 @@ GoogleMap.prototype = {
         };
 
         var self = this;
+        this.directionsDisplay.setMap(this.map);
         this.directionsService.route(request, function(response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
                 self.latestResponse = response;
