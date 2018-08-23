@@ -65,19 +65,19 @@ PlaceDB.prototype = {
         field.innerHTML = "<br>";
     },
 
-    genSelectBox: function() {
+    genSelectBox: function(pointName, onChangeFunc) {
         this._db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS NameTable (id unique, name, lat, lng)');
             tx.executeSql('SELECT * FROM ' + this._name, [], function(tx, results) {
-                var field = document.getElementById("place-selector");
+                var field = document.getElementById(pointName + "pointselector");
                 var len = results.rows.length;
                 console.log("data num: " + len);
                 var htmlText =
-                    '<div id="place-selector">' + 
-                    '<form name="place-form-test">' + 
-                    '<select name="place-selectbox-test">';
+                    '<div id="' + pointName + 'pointselector">' + 
+                    '<form name="' + pointName + 'pointform">' + 
+                    '<select name="' + pointName + 'point" onChange="' + onChangeFunc + '()">';
                 for (var i = 0; i < len; ++i) {
-                    var pos = new google.maps.LatLng(results.rows.item(i).lat, results.rows.item(i).lng);
+                    var pos = results.rows.item(i).lat + "," +  results.rows.item(i).lng;
                     htmlText += '<option value="' + pos + '">' + results.rows.item(i).name + '</option>';
                 }
                 htmlText += '</select></form></div>'

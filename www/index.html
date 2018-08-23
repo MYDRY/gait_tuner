@@ -48,26 +48,8 @@
         <input type="button" value="到着点に設定" onclick="gm.setGoalPosition()">
         <input type="button" value="経路を検索" onclick="gm.getRoute()">
 
-        <form name="startpointform">
-          <select name="startpoint" onChange="gm.selectStartPosition()">
-            <option value="">選択してください</option>
-            <option value="博多駅">博多駅</option>
-            <option value="久留米駅">久留米駅</option>
-          </select>
-        </form>
-        <form name="goalpointform">
-          <select name="goalpoint" onChange="gm.selectGoalPosition()">
-            <option value="">選択してください</option>
-            <option value="博多駅">博多駅</option>
-            <option value="久留米駅">久留米駅</option>
-          </select>
-        </form>
-        <div id="place-selector">
-          <form name="place-form-test">
-            <select name="place-selectbox-test">
-            </select>
-          </form>
-        </div>
+        <div id="startpointselector"></div>
+        <div id="goalpointselector"></div>
         <hr>
         <h2>Data Base</h2>
         <input type="button" value="Insert" onclick="md.resister()">
@@ -104,10 +86,11 @@
        function clock(){
            date_field.innerHTML = tm.getCurrentTime();
        }
-       var pdb = new PlaceDB();
-       pdb.genSelectBox();
-       var md = new MyDatabase("NameTable");
        var gm = new GoogleMap();
+       var pdb = new PlaceDB();
+       pdb.genSelectBox("start", "gm.selectStartPosition");
+       pdb.genSelectBox("goal", "gm.selectGoalPosition");
+       var md = new MyDatabase("NameTable");
       </script>
     </ons-page>
   </body>
