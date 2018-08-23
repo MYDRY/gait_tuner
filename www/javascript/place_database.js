@@ -39,7 +39,7 @@ PlaceDB.prototype = {
     show: function() {
         this._db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS NameTable (id unique, name, lat, lng)');
-            tx.executeSql('SELECT * FROM ' + this._name, [], MyDatabase.prototype.genList, this.errorCallBack);
+            tx.executeSql('SELECT * FROM ' + this._name, [], PlaceDB.prototype.genList, this.errorCallBack);
         }, this.errorCallBack);
     },
     
@@ -47,11 +47,17 @@ PlaceDB.prototype = {
         var field = document.getElementById("placelist");
         var len = results.rows.length;
         console.log("data num = " + len);
+        var htmlText = "";
         for (var i = 0; i < len; ++i) {
-            field.innerHTML =
-                "id: " + results.rows.item(i).id +   ", name: " + results.rows.item(i).name +
-                ", lat: " + results.rows.item(i).lat + ", lng: "+ results.rows.item(i).lng + "<br>";
+            htmlText +=
+                "==========================================================<br>" + 
+                "　id: " + results.rows.item(i).id + "<br>" + 
+                "　name: " + results.rows.item(i).name + "<br>" + 
+                "　lat: " + results.rows.item(i).lat + "<br>" +
+                "　lng: "+ results.rows.item(i).lng + "<br>" + 
+                "==========================================================<br>";
         }
+        field.innerHTML = htmlText;
     },
 
     hideList: function() {
