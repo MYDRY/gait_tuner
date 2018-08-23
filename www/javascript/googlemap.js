@@ -114,8 +114,8 @@ GoogleMap.prototype = {
         this.directionsService.route(request, function(response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
                 self.latestResponse = response;
-                alert("距離は" + response.routes[0].legs[0].distance.value + " [m]です。");
                 self.directionsDisplay.setDirections(response);
+                alert("距離は" + response.routes[0].legs[0].distance.value + " [m]です。");
             }
         });
     }
