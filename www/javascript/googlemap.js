@@ -19,6 +19,17 @@ GoogleMap.prototype = {
         this.directionsDisplay.setMap(this.map);
         google.maps.event.addListener(this.directionsDisplay, 'directions_changed', function(){});
 
+        this.startMarker = new google.maps.Marker({
+            map: this.map,
+            position: {lat: 0, lng: 0},
+            label: "出"
+        });
+        this.goalMarker = new google.maps.Marker({
+            map: this.map,
+            position: {lat: 0, lng: 0},
+            label: "到"
+        });
+        
         this.latestResponse = null;
         this.currentPos = null;
         this.startPosition = null;
@@ -64,43 +75,42 @@ GoogleMap.prototype = {
         });
     },
 
-    putMarker: function(pos, labelChar) {
-        var centerMark = new google.maps.Marker({
-            map: this.map,
-            position: pos,
-            label: labelChar
-        });
-        
-    },
-    
     getDistance: function() {
         var distance = this.latestResponse.routes[0].legs[0].distance.value;
         console.log("The distance is " + distance + " [m].");
         return distance;
     },
     
+    putStartMarker: function(pos) {
+        this.startMarker.setPosition(pos);
+    },
+
+    putGoalMarker: function(pos) {
+        this.goalMarker.setPosition(pos);
+    },
+    
     setStartPosition: function() {
         this.startPosition = this.map.getBounds().getCenter();
-        this.putMarker(this.startPosition, "出");
+        this.putStartMarker(this.startPosition);
         alert("出発点を設定しました。");
     },
 
     setGoalPosition: function() {
         this.goalPosition = this.map.getBounds().getCenter();
-        this.putMarker(this.goalPosition, "到");
+        this.putGoalMarker(this.goalPosition);
         alert("到着点を設定しました。");
     },
 
     selectStartPosition: function() {
         this.startPosition = document.startpointform.startpoint.options[document.startpointform.startpoint.selectedIndex].value;
         var latlngStrings = this.startPosition.split(",");
-        this.putMarker({lat: parseFloat(latlngStrings[0]), lng: parseFloat(latlngStrings[1])}, "出");
+        this.putStartMarker({lat: parseFloat(latlngStrings[0]), lng: parseFloat(latlngStrings[1])});
         alert("出発点を設定しました。");
     },
     selectGoalPosition: function() {
         this.goalPosition = document.goalpointform.goalpoint.options[document.goalpointform.goalpoint.selectedIndex].value;
         var latlngStrings = this.goalPosition.split(",");
-        this.putMarker({lat: parseFloat(latlngStrings[0]), lng: parseFloat(latlngStrings[1])}, "到");
+        this.putGoalMarker({lat: parseFloat(latlngStrings[0]), lng: parseFloat(latlngStrings[1])});
         alert("到着点を設定しました。");
     },
     
