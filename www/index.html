@@ -77,6 +77,15 @@
         </form>
         <div id="target_time_shower"></div>
         <hr>
+        <p>歩行速度</p>
+        <form name="speedparaform">
+          <select name="speedpara" onChange="tm.changeSpeedPara()">
+            <option value="">平均</option>
+            <option value="10.0">10m/s</option>
+            <option value="100.0">100m/s</option>
+          </select>
+        </form>
+
         <input type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
 
         <div id="panel" style="width: 300px;"></div>

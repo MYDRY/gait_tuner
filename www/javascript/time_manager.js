@@ -12,6 +12,12 @@ TimeManager.prototype = {
         this.remainingTime = 0;
     },
 
+    changeSpeedPara: function() {
+        var param = document.forms['speedparaform'].speedpara.value;
+        this.defaultSpeed.walk = param;
+        console.log(this.defaultSpeed.walk);
+    },
+
     getCurrentTime: function() {
         var date = new Date();
         return date.getHours() + ":" + ("0"+(date.getMinutes())).slice(-2);
