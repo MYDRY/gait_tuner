@@ -63,5 +63,25 @@ PlaceDB.prototype = {
     hideList: function() {
         var field = document.getElementById("placelist");
         field.innerHTML = "<br>";
+    },
+
+    genSelectBox: function() {
+        this._db.transaction(function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS NameTable (id unique, name, lat, lng)');
+            tx.executeSql('SELECT * FROM ' + this._name, [], function(tx, results) {
+                var field = document.getElementById("place-selector");
+                var len = results.rows.length;
+                console.log("data num: " + len);
+                var htmlText =
+                    '<div id="place-selector">' + 
+                    '<form name="place-form-test">' + 
+                    '<select name="place-selectbox-test">';
+                for (var i = 0; i < len; ++i) {
+                    htmlText += '<option value="a">a</option>';
+                }
+                htmlText += '</select></form></div>'
+                field.innerHTML = htmlText;
+            }, this.errorCallBack);
+        }, this.errorCallBack);        
     }
 };

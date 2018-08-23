@@ -62,8 +62,12 @@
             <option value="久留米駅">久留米駅</option>
           </select>
         </form>
-
-
+        <div id="place-selector">
+          <form name="place-form-test">
+            <select name="place-selectbox-test">
+            </select>
+          </form>
+        </div>
         <hr>
         <h2>Data Base</h2>
         <input type="button" value="Insert" onclick="md.resister()">
@@ -101,6 +105,7 @@
            date_field.innerHTML = tm.getCurrentTime();
        }
        var pdb = new PlaceDB();
+       pdb.genSelectBox();
        var md = new MyDatabase("NameTable");
        var gm = new GoogleMap();
       </script>
