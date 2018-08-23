@@ -3,9 +3,9 @@ function MyDatabase(name) {
 };
 
 MyDatabase.prototype = {
-    init: function(name="") {
+    init: function(name="db") {
         this._name = name;
-        this._db = window.openDatabase("Database", "1.0", this._name, 100);
+        this._db = window.openDatabase(this._name, "1.0", this._name, 100);
     },
     
     errorCallBack: function(err) {
@@ -15,21 +15,21 @@ MyDatabase.prototype = {
     insertFromPrompt: function(tx, results) {
         var name = window.prompt("名前を入力してください");
         var len = results.rows.length;    
-        tx.executeSql('INSERT INTO NameTable (id, name) VALUES (?, ?)', [len + 1, name]);
+        tx.executeSql('INSERT INTO ' + this._name + ' (id, name) VALUES (?, ?)', [len + 1, name]);
         window.location.reload();
     },
 
     resister: function() {
         this._db.transaction(function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS NameTable (id unique, name)');
-            tx.executeSql('SELECT * FROM NameTable', [], MyDatabase.prototype.insertFromPrompt, this.errorCallBack);
+            tx.executeSql('CREATE TABLE IF NOT EXISTS '+ this._name + ' (id unique, name)');
+            tx.executeSql('SELECT * FROM ' + this._name, [], MyDatabase.prototype.insertFromPrompt, this.errorCallBack);
         }, this.errorCallBack);
     },
     
     show: function() {
         this._db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS NameTable (id unique, name)');
-            tx.executeSql('SELECT * FROM NameTable', [], MyDatabase.prototype.genList, this.errorCallBack);
+            tx.executeSql('SELECT * FROM ' + this._name, [], MyDatabase.prototype.genList, this.errorCallBack);
         }, this.errorCallBack);
     },
     

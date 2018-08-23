@@ -73,7 +73,7 @@
         <form name="target_time_form">
           <input type="date" name="target_date" onchange="tm.showTargetTime()">
           <input type="time" name="target_time" onChange="tm.showTargetTime()">
-         <!-- <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">-->
+          <!-- <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">-->
         </form>
         <div id="target_time_shower"></div>
         <hr>
@@ -91,14 +91,14 @@
         <div id="panel" style="width: 300px;"></div>
       </div>
       <script type="text/javascript">
-          setInterval(clock, 1000);
-          var date_field = document.getElementById("time")
-          var tm = new TimeManager();
-          function clock(){
-            date_field.innerHTML = tm.getCurrentTime();
-          }
-          var md = new MyDatabase("NameTable");
-          var gm = new GoogleMap();
+       setInterval(clock, 1000);
+       var date_field = document.getElementById("time")
+       var tm = new TimeManager();
+       function clock(){
+           date_field.innerHTML = tm.getCurrentTime();
+       }
+       var md = new MyDatabase("NameTable");
+       var gm = new GoogleMap();
       </script>
     </ons-page>
   </body>
