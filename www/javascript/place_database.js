@@ -77,7 +77,8 @@ PlaceDB.prototype = {
                     '<form name="place-form-test">' + 
                     '<select name="place-selectbox-test">';
                 for (var i = 0; i < len; ++i) {
-                    htmlText += '<option value="a">a</option>';
+                    var pos = new google.maps.LatLng(results.rows.item(i).lat, results.rows.item(i).lng);
+                    htmlText += '<option value="' + pos + '">' + results.rows.item(i).name + '</option>';
                 }
                 htmlText += '</select></form></div>'
                 field.innerHTML = htmlText;
