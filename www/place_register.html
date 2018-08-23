@@ -37,8 +37,10 @@
   <body>
     <h1>地点登録</h1>
     <div id="map" style="width:350hw; height:300px"></div>
+    <input type="button" value="この地点を登録する" onclick="pdb.register()">
     <script>
-     var gm = new GoogleMap();
+     var gm  = new GoogleMap();
+     var pdb = new PlaceDB();
     </script>
   </body>
 </html>

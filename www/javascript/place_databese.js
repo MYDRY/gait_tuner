@@ -18,11 +18,12 @@ PlaceDB.prototype = {
         window.location.reload();
     },
 
-    resister: function() {
-        this._db.transaction(function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS '+ this._name + ' (id unique, name, lat, lng)');
-            tx.executeSql('SELECT * FROM ' + this._name, [], MyDatabase.prototype.insertFromPrompt, this.errorCallBack);
-        }, this.errorCallBack);
+    register: function() {
+        alert("この地点を登録します");
+        // this._db.transaction(function(tx) {
+        //     tx.executeSql('CREATE TABLE IF NOT EXISTS '+ this._name + ' (id unique, name, lat, lng)');
+        //     tx.executeSql('SELECT * FROM ' + this._name, [], MyDatabase.prototype.insertFromPrompt, this.errorCallBack);
+        // }, this.errorCallBack);
     },
     
     show: function() {
