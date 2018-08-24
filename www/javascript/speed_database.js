@@ -21,6 +21,7 @@ SpeedDB.prototype = {
         }
         
         this._db.transaction(function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS '+ this._name);
             tx.executeSql('CREATE TABLE IF NOT EXISTS '+ this._name + ' (walk, jog, run)');
             tx.executeSql('SELECT * FROM ' + this._name, [], function(tx, results) {
                 var len = results.rows.length;
