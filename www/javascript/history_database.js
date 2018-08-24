@@ -37,17 +37,17 @@ HistoryDB.prototype = {
     },
     
     genList: function(tx, results) {
-        var field = document.getElementById("placelist");
+        var field = document.getElementById("historylist");
         var len = results.rows.length;
         console.log("data num = " + len);
         var htmlText = "";
         for (var i = 0; i < len; ++i) {
             htmlText +=
                 "==========================================================<br>" + 
-                "　id: " + results.rows.item(i).id + "<br>" + 
-                "　name: " + results.rows.item(i).name + "<br>" + 
-                "　lat: " + results.rows.item(i).lat + "<br>" +
-                "　lng: "+ results.rows.item(i).lng + "<br>" + 
+                "　origin: " + results.rows.item(i).origin + "<br>" + 
+                "　dest: " + results.rows.item(i).dest + "<br>" + 
+                "　targettime: " + results.rows.item(i).targettime + "<br>" +
+                "　timestamp: "+ results.rows.item(i).timestamp + "<br>" + 
                 "==========================================================<br>";
         }
         field.innerHTML = htmlText;

@@ -23,6 +23,9 @@
     <!-- speed database -->
     <script type="text/javascript" charset="utf-8" src="javascript/speed_database.js"></script>
 
+    <!-- history database -->
+    <script type="text/javascript" charset="utf-8" src="javascript/history_database.js"></script>
+    
     <!-- gait_tuner -->
     <script type="text/javascript" charset="utf-8" src="javascript/gait_tuner.js"></script>
 
@@ -42,8 +45,11 @@
   </head>
   <body>
     <h1>履歴</h1>
+    <div id="historylist"></div>
     <a href="index.html" target="_blank">戻る</a>
     <script>
+     var hdb = new HistoryDB();
+     hdb.show();
     </script>
   </body>
 </html>
