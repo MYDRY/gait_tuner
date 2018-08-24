@@ -63,12 +63,13 @@
     -->
 
     <div class="tabs">
-      <button class="tab_item action" style="width: 25%;" onclick="location.href='index.html'">判定</button>
-      <button class="tab_item" style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
-      <button class="tab_item" style="width: 25%;" onclick="location.href='history.html'">履歴</button>
-      <button class="tab_item" style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
+      <button class="tab_item btn action" style="width: 25%;" onclick="location.href='index.html'">判定</button>
+      <button class="tab_item btn " style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
+      <button class="tab_item btn " style="width: 25%;" onclick="location.href='history.html'">履歴</button>
+      <button class="tab_item btn " style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
     </div>
     <div class="container" style="text-align: center;">
+      <br><br>
       <span>出発時間</span>
       <form name="start_time_form">
         <select name="start_time" onChange="tm.addStartTime()" class="form-control input-lg">
@@ -82,16 +83,25 @@
         </select>
       </form>
       <br>
+      <form name="target_time_form">
+        <span>目標時間</span><br>
+        <input type="date" name="target_date" onchange="tm.calcRemainingTime();" class="form-control input-lg">
+        <input type="time" name="target_time" onchange="tm.calcRemainingTime();" class="form-control input-lg">
+      </form>
+
+
+      <br>
 
       <div class="tabs">
-        <button class="tab1_item action" style="width: 50%;" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
-        <button class="tab1_item" style="width: 50%;" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
+        <button class="tab1_item btn action" style="width: 50%;" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
+        <button class="tab1_item btn" style="width: 50%;" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
       </div>
       <br>
       <div id="selector-with-map" class="place-selector active">
         <div id="map" style="width:350hw; height:300px"></div>
-        <input class="set_btn" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()"><br>
-        <input class="set_btn" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()"><br>
+        <br><br>
+        <input class="btn btn-danger" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()" ><br><br>
+        <input class="btn btn-danger" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()"><br>
       </div>
       <div id="selector-with-database" class="place-selector">
         <span>出発地</span>
@@ -100,16 +110,11 @@
         <div id="goalpointselector"></div>
       </div>
 
-      <input class="check_btn" type="button" value="経路を検索" onclick="gm.getRoute()"><br>
+      <input class="btn btn-danger" type="button" value="経路を検索" onclick="gm.getRoute()"><br>
 
-      <form name="target_time_form">
-        <span>目標時間</span><br>
-        <input type="date" name="target_date" onchange="tm.calcRemainingTime();">
-        <input type="time" name="target_time" onchange="tm.calcRemainingTime();">
-      </form>
-      <div id="target_time_shower"></div>
-      <br>
-      <input class="check_btn" type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
+      <br><br>
+
+      <input class="btn btn-danger" type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
       <br>
       <div id="panel" style="width: 300px;"></div>
     </div>

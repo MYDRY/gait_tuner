@@ -81,7 +81,7 @@ PlaceDB.prototype = {
                     var pos = results.rows.item(i).lat + "," +  results.rows.item(i).lng;
                     htmlText += '<option value="' + pos + '">' + results.rows.item(i).name + '</option>';
                 }
-                htmlText += '</select></form></div>'
+                htmlText += '</select></form></div><br>'
                 field.innerHTML = htmlText;
             }, this.errorCallBack);
         }, this.errorCallBack);
