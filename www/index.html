@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
+
     <script>
      ons.bootstrap()
         .controller('HelloController', function() {
@@ -42,50 +43,45 @@
   </head>
   <body>
     <ons-page ng-controller="HelloController as hello">
-      <div class="content" style="margin: 10px;">
-        <div id="time"></div>
-        <h2>Google Map</h2>
-        <div id="map" style="width:350hw; height:300px"></div>
-        <input type="button" value="出発点に設定" onclick="gm.setStartPosition()">
-        <input type="button" value="到着点に設定" onclick="gm.setGoalPosition()">
-        <input type="button" value="経路を検索" onclick="gm.getRoute()">
-
-        <div id="startpointselector"></div>
-        <div id="goalpointselector"></div>
-        <hr>
-        <h2>Data Base</h2>
-        <input type="button" value="Insert" onclick="md.resister()">
-        <input type="button" value="showNames" onclick="md.show()">
-        <div id="namelist"></div>
-        <hr>
-        <h2>Time Manager</h2>
-        <form name="target_time_form">
-          <input type="date" name="target_date" onchange="tm.showTargetTime()">
-          <input type="time" name="target_time" onChange="tm.showTargetTime()">
-          <!-- <input type="button" name="submit" value="確定する" onclick="tm.showTargetTime()">-->
-        </form>
-        <div id="target_time_shower"></div>
-        <hr>
-        <h2>歩行速度</h2>
-        <a href="speed_configure.html" target="_blank">設定する</a><br>
-        
-        <input type="button" value="判定する" onclick="gt.judge(gm.getDistance(), tm.remainingTime, sdb.getSpeeds())">
-        <hr>
-        <h2>地点登録</h2>
-        <a href="place_register.html" target="_blanck">place_register</a>
-        <div id="panel" style="width: 300px;"></div>
+      <div class="tabs">
+        <input id="home" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="home"><a class="action" href="index.html">Home</a></label>
+        <input id="regster" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="regster"><a href="place_register.html">Register</a></label>
+        <input id="contact" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="contact"><a href="#">Contact</a></label>
+        <input id="config" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="config"><a href="setting.html">Config</a></label>
       </div>
+      <hr>
+      <div id="map" style="width:350hw; height:300px"></div>
+      <br>
+      <span>出発地</span>
+      <div id="startpointselector"></div>
+      <input class="set_btn" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()">
+      <br>
+      <span>目的地</span>
+      <div id="goalpointselector"></div>
+      <input class="set_btn" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()">
+      <br>
+      <input class="check_btn" type="button" value="経路を検索" onclick="gm.getRoute()">
+      <br>
+      <form name="target_time_form">
+        <span>目標時間</span>
+        <input type="date" name="target_date" onchange="tm.showTargetTime()">
+        <input type="time" name="target_time" onchange="tm.showTargetTime()">
+      </form>
+      <div id="target_time_shower"></div>
+      <br>
+      <input class="check_btn" type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
+      <br>
+      <div id="panel" style="width: 300px;"></div>
       <script type="text/javascript">
-       setInterval(clock, 1000);
-       var date_field = document.getElementById("time")
-       var tm = new TimeManager();
-       function clock(){
-           date_field.innerHTML = tm.getCurrentTime();
-       }
-       var gm = new GoogleMap();
-       var pdb = new PlaceDB();
-       pdb.genSelectBox("start", "gm.selectStartPosition");
-       pdb.genSelectBox("goal", "gm.selectGoalPosition");
+        var tm = new TimeManager();
+        var gm = new GoogleMap();
+        var pdb = new PlaceDB();
+        pdb.genSelectBox("start", "gm.selectStartPosition");
+        pdb.genSelectBox("goal", "gm.selectGoalPosition");
        var gt = new GaitTuner();
        var sdb = new SpeedDB();
       </script>
