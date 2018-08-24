@@ -32,7 +32,7 @@ SpeedDB.prototype = {
     show: function() {
         this._db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS ' + this._name+ ' (walk, jog, run)');
-            tx.executeSql('SELECT * FROM ' + this._name, [], PlaceDB.prototype.genList, this.errorCallBack);
+            tx.executeSql('SELECT * FROM ' + this._name, [], SpeedDB.prototype.genList, this.errorCallBack);
         }, this.errorCallBack);
     },
     
