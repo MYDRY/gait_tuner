@@ -38,26 +38,26 @@
     </script>
   </head>
   <body>
-    <div class="tabs">
-      <button class="tab1_item btn" style="width: 25%;" onclick="location.href='index.html'">判定</button>
-      <button class="tab1_item btn action" style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
-      <button class="tab1_item btn" style="width: 25%;" onclick="location.href='history.html'">履歴</button>
-      <button class="tab1_item btn" style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
-    </div>
-    <div class="container">
-      <br><br><br>
-      <h1>地点登録</h1>
-      <div id="map" style="width:350hw; height:300px"></div>
-      <input class="set_btn" type="button" value="この地点を登録する" onclick="pdb.register(gm)">
-      <input class="check_btn" type="button" value="地点一覧" onclick="pdb.show()">
-      <div id="placelist"></div>
-    </div>
-    <script>
-      var gm  = new GoogleMap();
-      var pdb = new PlaceDB();
-    </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <div class="tabs">
+    <button class="tab1_item btn" style="width: 25%;" onclick="location.href='index.html'">判定</button>
+    <button class="tab1_item btn action" style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
+    <button class="tab1_item btn" style="width: 25%;" onclick="location.href='history.html'">履歴</button>
+    <button class="tab1_item btn" style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
+  </div>
+  <div class="container">
+    <br><br><br>
+    <h1>地点登録</h1>
+    <div id="map" style="width:350hw; height:300px"></div>
+    <input class="set_btn" type="button" value="この地点を登録する" onclick="pdb.register(gm)">
+    <input class="check_btn" type="button" value="地点一覧" onclick="pdb.show()">
+    <div id="placelist"></div>
+  </div>
+  <script>
+   var gm  = new GoogleMap();
+   var pdb = new PlaceDB();
+  </script>
   </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </html>
