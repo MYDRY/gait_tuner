@@ -22,7 +22,7 @@
 
     <!-- speed database -->
     <script type="text/javascript" charset="utf-8" src="javascript/speed_database.js"></script>
-    
+
     <!-- gait_tuner -->
     <script type="text/javascript" charset="utf-8" src="javascript/gait_tuner.js"></script>
 
@@ -41,6 +41,16 @@
     </script>
   </head>
   <body>
+    <div class="tabs">
+      <input id="home" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="home"><a href="index.html">判定</a></label>
+      <input id="regster" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="regster"><a href="place_register.html">地点登録</a></label>
+      <input id="contact" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
+      <input id="config" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="config"><a class="action" href="speed_configure.html">設定</a></label>
+    </div>
     <h1>速度設定</h1>
 
     <form name="speed-form">
@@ -51,7 +61,7 @@
       <h2>ジョギングの速さ</h2>
       <select name="jog-speed-selbox" id="jog-speed-selbox">
       </select>
-      
+
       <h2>走る速さ</h2>
       <select name="run-speed-selbox" id="run-speed-selbox">
       </select>

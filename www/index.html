@@ -46,64 +46,29 @@
   </head>
   <body>
     <ons-page ng-controller="HelloController as hello">
-      <div class="content" style="margin: 10px;">
-        <div id="time"></div>
-
-        <h2>出発時間</h2>
-        <form name="start_time_form">
-          <select name="start_time" onChange="tm.addStartTime()">
-            <option value="0">現在時刻</option>
-            <option value="10">１０分後</option>
-            <option value="20">２０分後</option>
-            <option value="30">３０分後</option>
-            <option value="40">４０分後</option>
-            <option value="50">５０分後</option>
-            <option value="60">６０分後</option>
-          </select>
-        </form>
-        <h2>Google Map</h2>
-        <div id="map" style="width:350hw; height:300px"></div>
-        <input type="button" value="出発点に設定" onclick="gm.setStartPosition()">
-        <input type="button" value="到着点に設定" onclick="gm.setGoalPosition()">
-        <input type="button" value="経路を検索" onclick="gm.getRoute()">
-
-        <div id="startpointselector"></div>
-        <div id="goalpointselector"></div>
-        <hr>
-        <h2>Data Base</h2>
-        <input type="button" value="Insert" onclick="md.resister()">
-        <input type="button" value="showNames" onclick="md.show()">
-        <div id="namelist"></div>
-        <hr>
-        <h2>Time Manager</h2>
-        <form name="target_time_form">
-          <input type="date" name="target_date" onchange="tm.calcRemainingTime()">
-          <input type="time" name="target_time" onChange="tm.calcRemainingTime()">
-        </form>
-        <div id="target_time_shower"></div>
-        <hr>
-        <h2>歩行速度</h2>
-        <a href="speed_configure.html" target="_blank">設定する</a><br>
-        
-        <input type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
-        <hr>
-        <h2>履歴</h2>
-        <a href="history.html" target="_blank">履歴</a>
-        <hr>
-        <h2>地点登録</h2>
-        <a href="place_register.html" target="_blanck">place_register</a>
-        <div id="panel" style="width: 300px;"></div>
       <div class="tabs">
         <input id="home" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="home"><a class="action" href="index.html">Home</a></label>
+        <label class="tab_item" for="home"><a class="action" href="index.html">判定</a></label>
         <input id="regster" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="regster"><a href="place_register.html">Register</a></label>
+        <label class="tab_item" for="register"><a href="place_register.html">地点登録</a></label>
         <input id="contact" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="contact"><a href="#">Contact</a></label>
+        <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
         <input id="config" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="config"><a href="speed_configure.html">Config</a></label>
+        <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
       </div>
       <hr>
+      <span>出発時間</span>
+      <form name="start_time_form">
+        <select name="start_time" onChange="tm.addStartTime()">
+          <option value="0">現在時刻</option>
+          <option value="10">１０分後</option>
+          <option value="20">２０分後</option>
+          <option value="30">３０分後</option>
+          <option value="40">４０分後</option>
+          <option value="50">５０分後</option>
+          <option value="60">６０分後</option>
+        </select>
+      </form>
       <div id="map" style="width:350hw; height:300px"></div>
       <br>
       <span>出発地</span>
@@ -118,12 +83,12 @@
       <br>
       <form name="target_time_form">
         <span>目標時間</span>
-        <input type="date" name="target_date" onchange="tm.showTargetTime()">
-        <input type="time" name="target_time" onchange="tm.showTargetTime()">
+        <input type="date" name="target_date" onchange="tm.calcRemainingTime();">
+        <input type="time" name="target_time" onchange="tm.calcRemainingTime();">
       </form>
       <div id="target_time_shower"></div>
       <br>
-      <input class="check_btn" type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
+      <input class="check_btn" type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
       <br>
       <div id="panel" style="width: 300px;"></div>
       <script type="text/javascript">
