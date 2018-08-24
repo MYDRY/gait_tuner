@@ -48,27 +48,15 @@
     </script>
   </head>
   <body>
-    <!--
-         <div class="tabs">
-         <input id="home" type="radio" name="tab_item" checked>
-         <label class="tab_item" for="home"><a class="action" href="index.html">判定</a></label>
-         <input id="regster" type="radio" name="tab_item" checked>
-         <label class="tab_item" for="register"><a href="place_register.html">地点登録</a></label>
-         <input id="contact" type="radio" name="tab_item" checked>
-         <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
-         <input id="config" type="radio" name="tab_item" checked>
-         <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
-         </div>
-    -->
-
     <div class="tabs">
       <button class="tab1_item btn action" style="width: 25%;" onclick="location.href='index.html'">判定</button>
       <button class="tab1_item btn " style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
       <button class="tab1_item btn " style="width: 25%;" onclick="location.href='history.html'">履歴</button>
       <button class="tab1_item btn " style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
     </div>
-    <div class="container" style="text-align: center;">
+    <div class="container" style="text-align: center;"> 
       <br><br><br>
+      <h1 style="text-align: left;">遅刻判定</h1>
       <span>出発時間</span>
       <form name="start_time_form">
         <select name="start_time" onChange="tm.addStartTime()" class="form-control input-lg">
@@ -122,8 +110,9 @@
 
       <input class="btn btn-danger btn-lg" style="font-weight: 900; width: 90%;"
              type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
-      <br>
+      <br><br>
       <div id="panel" style="width: 300px;"></div>
+      <br><br>
       <script type="text/javascript">
        var tm = new TimeManager();
        var gm = new GoogleMap();
