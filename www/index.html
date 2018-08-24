@@ -69,18 +69,28 @@
           <option value="60">６０分後</option>
         </select>
       </form>
-      <div id="map" style="width:350hw; height:300px"></div>
       <br>
-      <span>出発地</span>
-      <div id="startpointselector"></div>
-      <input class="set_btn" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()">
-      <br>
-      <span>目的地</span>
-      <div id="goalpointselector"></div>
-      <input class="set_btn" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()">
-      <br>
-      <input class="check_btn" type="button" value="経路を検索" onclick="gm.getRoute()">
-      <br>
+
+      <div class="tabs">
+        <button class="tab_item" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
+        <button class="tab_item" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
+      </div>
+
+      <div id="selector-with-map" class="place-selector">
+        <div id="map" style="width:350hw; height:300px"></div>
+        <input class="set_btn" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()"><br>
+        <input class="set_btn" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()"><br>
+      </div>
+
+      <div id="selector-with-database" class="place-selector">
+        <span>出発地</span>
+        <div id="startpointselector"></div>
+        <span>目的地</span>
+        <div id="goalpointselector"></div>
+      </div>
+      
+      <input class="check_btn" type="button" value="経路を検索" onclick="gm.getRoute()"><br>
+
       <form name="target_time_form">
         <span>目標時間</span>
         <input type="date" name="target_date" onchange="tm.calcRemainingTime();">
@@ -91,12 +101,13 @@
       <input class="check_btn" type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
       <br>
       <div id="panel" style="width: 300px;"></div>
+
       <script type="text/javascript">
-        var tm = new TimeManager();
-        var gm = new GoogleMap();
-        var pdb = new PlaceDB();
-        pdb.genSelectBox("start", "gm.selectStartPosition");
-        pdb.genSelectBox("goal", "gm.selectGoalPosition");
+       var tm = new TimeManager();
+       var gm = new GoogleMap();
+       var pdb = new PlaceDB();
+       pdb.genSelectBox("start", "gm.selectStartPosition");
+       pdb.genSelectBox("goal", "gm.selectGoalPosition");
        var gt = new GaitTuner();
        var sdb = new SpeedDB();
        var hdb = new HistoryDB();
