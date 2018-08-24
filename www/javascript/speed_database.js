@@ -56,7 +56,6 @@ SpeedDB.prototype = {
 
     setSpeeds: function() {
         var self = this;
-        console.log("HELLO");
         this._db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS ' + this._name + ' (walk, jog, run)');
             tx.executeSql('SELECT * FROM ' + this._name, [], function(tx, results) {
@@ -64,6 +63,7 @@ SpeedDB.prototype = {
                 if (len == 1) {
                     for (key in self.speeds) {
                         self.speeds[key] = parseFloat(results.rows.item(0)[key]);
+                        console.log("HELLOHELLOHELLOHELLO");
                     }
                 } else {
                     self.speeds["walk"] = 1.0;
@@ -72,6 +72,10 @@ SpeedDB.prototype = {
                 }
             }, this.errorCallBack);
         }, this.errorCallBack);
+    },
+
+    getSpeeds: function() {
+        return this.speeds;
     },
     
     addSpeedOptions: function(mode) {
