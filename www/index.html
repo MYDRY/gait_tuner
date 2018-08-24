@@ -75,13 +75,12 @@
         <button class="tab_item" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
         <button class="tab_item" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
       </div>
-
-      <div id="selector-with-map" class="place-selector">
+      <br>
+      <div id="selector-with-map" class="place-selector active">
         <div id="map" style="width:350hw; height:300px"></div>
         <input class="set_btn" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()"><br>
         <input class="set_btn" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()"><br>
       </div>
-
       <div id="selector-with-database" class="place-selector">
         <span>出発地</span>
         <div id="startpointselector"></div>
@@ -111,6 +110,19 @@
        var gt = new GaitTuner();
        var sdb = new SpeedDB();
        var hdb = new HistoryDB();
+
+       function togglePlaceSelector(event, selectorName) {
+           var tabContent = document.getElementsByClassName("place-selector");
+           for (var i = 0; i < tabContent.length; ++i) {
+               tabContent[i].style.display = "none";
+           }
+           var tabLinks = document.getElementsByClassName("tab_item");
+           for (var i = 0; i < tabLinks.length; ++i) {
+               tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+           }
+           document.getElementById("selector-with-" + selectorName).style.display = "block";
+           event.currentTarget.className += " active";
+       }
       </script>
     </ons-page>
   </body>
