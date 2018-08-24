@@ -45,11 +45,16 @@ SpeedDB.prototype = {
         var htmlText = "";
         for (var i = 0; i < len; ++i) {
             htmlText +=
-                "==========================================================<br>" + 
-                "　walk: " + results.rows.item(i).walk + "<br>" + 
-                "　jog : " + results.rows.item(i).jog + "<br>" +
-                "　run : "+ results.rows.item(i).run + "<br>" + 
-                "==========================================================<br>";
+                '<div style="border: solid 3px lavender; margin: 10px; padding-left: 10%; float: center;">' +
+                '現在の設定<br>' +
+                '<table>' + 
+                '<tr><td>歩く速さ</td>' +
+                '<td style="padding-left: 10px;">' + results.rows.item(i).walk + ' [m/s]</td></tr>' + 
+                '<tr><td>ジョギングの速さ</td>' +
+                '<td style="padding-left: 10px;">' + results.rows.item(i).jog  + ' [m/s]</td></tr>' +
+                '<tr><td>走る速さ</td>' +
+                '<td style="padding-left: 10px;">' + results.rows.item(i).run  + ' [m/s]</td></tr>' + 
+                '</table></div>';
         }
         field.innerHTML = htmlText;
     },
