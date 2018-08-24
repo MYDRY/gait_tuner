@@ -45,41 +45,36 @@
   </head>
   <body>
     <div class="tabs">
-      <input id="home" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="home"><a href="index.html">判定</a></label>
-      <input id="regster" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="regster"><a href="place_register.html">地点登録</a></label>
-      <input id="contact" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
-      <input id="config" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="config"><a class="action" href="speed_configure.html">設定</a></label>
+      <button class="tab_item" style="width: 25%;" onclick="location.href='index.html'">判定</button>
+      <button class="tab_item" style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
+      <button class="tab_item" style="width: 25%;" onclick="location.href='history.html'">履歴</button>
+      <button class="tab_item action" style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
     </div>
-
-    <h1>速度設定</h1>
-    <br>
-    <form name="speed-form">
-      <h2>歩く速さ</h2>
-      <select name="walk-speed-selbox" id="walk-speed-selbox" class="form-control input-lg">
-      </select>
+    <div class="container">
+      <h1>速度設定</h1>
       <br>
+      <form name="speed-form">
+        <h2>歩く速さ</h2>
+        <select name="walk-speed-selbox" id="walk-speed-selbox" class="form-control input-lg">
+        </select>
+        <br>
 
-      <h2>ジョギングの速さ</h2>
-      <select name="jog-speed-selbox" id="jog-speed-selbox" class="form-control input-lg">
-      </select>
+        <h2>ジョギングの速さ</h2>
+        <select name="jog-speed-selbox" id="jog-speed-selbox" class="form-control input-lg">
+        </select>
+        <br>
+
+        <h2>走る速さ</h2>
+        <select name="run-speed-selbox" id="run-speed-selbox" class="form-control input-lg">
+        </select>
+      </form>
+
       <br>
-
-      <h2>走る速さ</h2>
-      <select name="run-speed-selbox" id="run-speed-selbox" class="form-control input-lg">
-      </select>
-
-    </form>
-
-    <br>
-    <div style="text-align: center">
-    <input type="button" value="決定する" onclick="sdb.submit()" class="btn btn-default btn-lg">
-    <div>
-    <div id="speedlist"></div>
-    <a href="index.html" target="_blank">戻る</a>
+      <div style="text-align: center">
+        <input type="button" value="決定する" onclick="sdb.submit()" class="btn btn-default btn-lg">
+      </div>
+      <div id="speedlist"></div>
+    </div>
   </body>
   <script>
    var sdb = new SpeedDB();

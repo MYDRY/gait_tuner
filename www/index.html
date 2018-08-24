@@ -49,6 +49,7 @@
   </head>
   <body>
     <ons-page ng-controller="HelloController as hello">
+      <!--
       <div class="tabs">
         <input id="home" type="radio" name="tab_item" checked>
         <label class="tab_item" for="home"><a class="action" href="index.html">判定</a></label>
@@ -59,7 +60,15 @@
         <input id="config" type="radio" name="tab_item" checked>
         <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
       </div>
-      <hr>
+    -->
+
+    <div class="tabs">
+      <button class="tab_item action" style="width: 25%;" onclick="location.href='index.html'">判定</button>
+      <button class="tab_item" style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
+      <button class="tab_item" style="width: 25%;" onclick="location.href='history.html'">履歴</button>
+      <button class="tab_item" style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
+    </div>
+    <div class="container" style="text-align: center;">
       <span>出発時間</span>
       <form name="start_time_form">
         <select name="start_time" onChange="tm.addStartTime()">
@@ -75,8 +84,8 @@
       <br>
 
       <div class="tabs">
-        <button class="tab_item action" style="width: 50%;" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
-        <button class="tab_item" style="width: 50%;" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
+        <button class="tab1_item action" style="width: 50%;" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
+        <button class="tab1_item" style="width: 50%;" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
       </div>
       <br>
       <div id="selector-with-map" class="place-selector active">
@@ -94,7 +103,7 @@
       <input class="check_btn" type="button" value="経路を検索" onclick="gm.getRoute()"><br>
 
       <form name="target_time_form">
-        <span>目標時間</span>
+        <span>目標時間</span><br>
         <input type="date" name="target_date" onchange="tm.calcRemainingTime();">
         <input type="time" name="target_time" onchange="tm.calcRemainingTime();">
       </form>
@@ -103,7 +112,7 @@
       <input class="check_btn" type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
       <br>
       <div id="panel" style="width: 300px;"></div>
-
+    </div>
       <script type="text/javascript">
        var tm = new TimeManager();
        var gm = new GoogleMap();
