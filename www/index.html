@@ -63,10 +63,10 @@
     -->
 
     <div class="tabs">
-      <button class="tab_item btn action" style="width: 25%;" onclick="location.href='index.html'">判定</button>
-      <button class="tab_item btn " style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
-      <button class="tab_item btn " style="width: 25%;" onclick="location.href='history.html'">履歴</button>
-      <button class="tab_item btn " style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
+      <button class="tab1_item btn action" style="width: 25%;" onclick="location.href='index.html'">判定</button>
+      <button class="tab1_item btn " style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
+      <button class="tab1_item btn " style="width: 25%;" onclick="location.href='history.html'">履歴</button>
+      <button class="tab1_item btn " style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
     </div>
     <div class="container" style="text-align: center;">
       <br><br>
@@ -95,8 +95,8 @@
       <br>
 
       <div class="tabs">
-        <button class="tab1_item btn action" style="width: 50%;" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
-        <button class="tab1_item btn" style="width: 50%;" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
+        <button class="tab2_item btn action" style="width: 50%;" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
+        <button class="tab2_item btn" style="width: 50%;" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
       </div>
       <br>
       <div id="selector-with-map" class="place-selector active">
@@ -136,7 +136,7 @@
            for (var i = 0; i < tabContent.length; ++i) {
                tabContent[i].style.display = "none";
            }
-           var tabLinks = document.getElementsByClassName("tab_item");
+           var tabLinks = document.getElementsByClassName("tab2_item");
            for (var i = 0; i < tabLinks.length; ++i) {
                tabLinks[i].className = tabLinks[i].className.replace(" action", "");
            }
