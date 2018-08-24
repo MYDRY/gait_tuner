@@ -1,5 +1,15 @@
 .tabs {
   margin-top: 50px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+  position:fixed;
+}
+
+.tabs_1 {
+  margin-top: 50px;
   padding-bottom: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -7,12 +17,28 @@
   margin: 0 auto;
 }
 
-.tab_item {
+.tab1_item {
   width: calc(100%/4);
-  height: 32px;
+  height: 50px;
   border-bottom: 5px solid #d84747;
   background-color: #b8b8b8;
   line-height: 32px;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.tab2_item {
+  width: calc(100%/4);
+  height: 30px;
+  border-bottom: 5px solid #d84747;
+  background-color: #b8b8b8;
+  line-height: 15px;
   font-size: 16px;
   text-align: center;
   color: #ffffff;

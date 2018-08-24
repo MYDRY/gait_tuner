@@ -48,21 +48,30 @@
     </script>
   </head>
   <body>
-    <ons-page ng-controller="HelloController as hello">
-      <div class="tabs">
-        <input id="home" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="home"><a class="action" href="index.html">判定</a></label>
-        <input id="regster" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="register"><a href="place_register.html">地点登録</a></label>
-        <input id="contact" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
-        <input id="config" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
-      </div>
-      <hr>
+    <!--
+         <div class="tabs">
+         <input id="home" type="radio" name="tab_item" checked>
+         <label class="tab_item" for="home"><a class="action" href="index.html">判定</a></label>
+         <input id="regster" type="radio" name="tab_item" checked>
+         <label class="tab_item" for="register"><a href="place_register.html">地点登録</a></label>
+         <input id="contact" type="radio" name="tab_item" checked>
+         <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
+         <input id="config" type="radio" name="tab_item" checked>
+         <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
+         </div>
+    -->
+
+    <div class="tabs">
+      <button class="tab1_item btn action" style="width: 25%;" onclick="location.href='index.html'">判定</button>
+      <button class="tab1_item btn " style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
+      <button class="tab1_item btn " style="width: 25%;" onclick="location.href='history.html'">履歴</button>
+      <button class="tab1_item btn " style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
+    </div>
+    <div class="container" style="text-align: center;">
+      <br><br><br>
       <span>出発時間</span>
       <form name="start_time_form">
-        <select name="start_time" onChange="tm.addStartTime()">
+        <select name="start_time" onChange="tm.addStartTime()" class="form-control input-lg">
           <option value="0">現在時刻</option>
           <option value="10">１０分後</option>
           <option value="20">２０分後</option>
@@ -72,39 +81,67 @@
           <option value="60">６０分後</option>
         </select>
       </form>
-      <div id="map" style="width:350hw; height:300px"></div>
-      <br>
-      <span>出発地</span>
-      <div id="startpointselector"></div>
-      <input class="set_btn" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()">
-      <br>
-      <span>目的地</span>
-      <div id="goalpointselector"></div>
-      <input class="set_btn" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()">
-      <br>
-      <input class="check_btn" type="button" value="経路を検索" onclick="gm.getRoute()">
       <br>
       <form name="target_time_form">
-        <span>目標時間</span>
-        <input type="date" name="target_date" onchange="tm.calcRemainingTime();">
-        <input type="time" name="target_time" onchange="tm.calcRemainingTime();">
+        <span>目標時間</span><br>
+        <input type="date" name="target_date" onchange="tm.calcRemainingTime();"
+               class="form-control input-lg" style="height: 35px;">
+        <input type="time" name="target_time" onchange="tm.calcRemainingTime();"
+               class="form-control input-lg" style="height: 35px;">
       </form>
-      <div id="target_time_shower"></div>
+
+
       <br>
-      <input class="check_btn" type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
+
+      <div class="tabs_1">
+        <button class="tab2_item btn action" style="width: 50%;" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
+        <button class="tab2_item btn" style="width: 50%;" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
+      </div>
+      <br>
+      <div id="selector-with-map" class="place-selector active">
+        <div id="map" style="width:350hw; height:300px"></div>
+        <br><br>
+        <input class="btn btn-danger" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()" ><br><br>
+        <input class="btn btn-danger" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()"><br>
+      </div>
+      <div id="selector-with-database" class="place-selector" style="display: none;">
+        <span>出発地</span>
+        <div id="startpointselector"></div>
+        <span>目的地</span>
+        <div id="goalpointselector"></div>
+      </div>
+      <br><br>
+
+      <input class="btn btn-danger" type="button" value="経路を検索" onclick="gm.getRoute()"><br>
+
+      <br><br>
+
+      <input class="btn btn-success btn-lg" type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
       <br>
       <div id="panel" style="width: 300px;"></div>
-      <script type="text/javascript">
-        var tm = new TimeManager();
-        var gm = new GoogleMap();
-        var pdb = new PlaceDB();
-        pdb.genSelectBox("start", "gm.selectStartPosition");
-        pdb.genSelectBox("goal", "gm.selectGoalPosition");
-       var gt = new GaitTuner();
-       var sdb = new SpeedDB();
-       var hdb = new HistoryDB();
-      </script>
-    </ons-page>
+    <script type="text/javascript">
+     var tm = new TimeManager();
+     var gm = new GoogleMap();
+     var pdb = new PlaceDB();
+     pdb.genSelectBox("start", "gm.selectStartPosition");
+     pdb.genSelectBox("goal", "gm.selectGoalPosition");
+     var gt = new GaitTuner();
+     var sdb = new SpeedDB();
+     var hdb = new HistoryDB();
+
+     function togglePlaceSelector(event, selectorName) {
+         var tabContent = document.getElementsByClassName("place-selector");
+         for (var i = 0; i < tabContent.length; ++i) {
+             tabContent[i].style.display = "none";
+         }
+         var tabLinks = document.getElementsByClassName("tab2_item");
+         for (var i = 0; i < tabLinks.length; ++i) {
+             tabLinks[i].className = tabLinks[i].className.replace(" action", "");
+         }
+         document.getElementById("selector-with-" + selectorName).style.display = "block";
+         event.currentTarget.className += " action";
+     }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
