@@ -39,22 +39,18 @@
   </head>
   <body>
     <div class="tabs">
-      <input id="home" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="home"><a href="index.html">判定</a></label>
-      <input id="regster" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="regster"><a class="action" href="place_register.html">地点登録</a></label>
-      <input id="contact" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
-      <input id="config" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
+      <button class="tab_item btn" style="width: 25%;" onclick="location.href='index.html'">判定</button>
+      <button class="tab_item btn action" style="width: 25%;" onclick="location.href='place_register.html'">地点登録</button>
+      <button class="tab_item btn" style="width: 25%;" onclick="location.href='history.html'">履歴</button>
+      <button class="tab_item btn" style="width: 25%;" onclick="location.href='speed_configure.html'">設定</button>
     </div>
-    <hr>
-
-    <h3>地点登録</h3>
-    <div id="map" style="width:350hw; height:300px"></div>
-    <input class="set_btn" type="button" value="この地点を登録する" onclick="pdb.register(gm)">
-    <input class="check_btn" type="button" value="地点一覧" onclick="pdb.show()">
-    <div id="placelist"></div>
+    <div class="container">
+      <h1>地点登録</h1>
+      <div id="map" style="width:350hw; height:300px"></div>
+      <input class="set_btn" type="button" value="この地点を登録する" onclick="pdb.register(gm)">
+      <input class="check_btn" type="button" value="地点一覧" onclick="pdb.show()">
+      <div id="placelist"></div>
+    </div>
     <script>
       var gm  = new GoogleMap();
       var pdb = new PlaceDB();
