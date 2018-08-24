@@ -86,7 +86,7 @@ SpeedDB.prototype = {
     addSpeedOptions: function(mode) {
         console.log("HELLO");
         var speedOptions = { "walk": ["0.8", "1.0", "1.2"],
-                             "jog":  ["1.5", "2.0", "2,5"],
+                             "jog":  ["1.5", "2.0", "2.5"],
                              "run":  ["5.0", "6.0", "7.0"] };
         var selbox = document.getElementById(mode + "-speed-selbox");
         var options = selbox.options;
