@@ -7,7 +7,7 @@
   margin: 0 auto;
 }
 
-.tab_item {
+.tab1_item {
   width: calc(100%/4);
   height: 50px;
   border-bottom: 5px solid #d84747;
@@ -23,7 +23,7 @@
   transition: all 0.2s ease;
 }
 
-.tab1_item {
+.tab2_item {
   width: calc(100%/4);
   height: 30px;
   border-bottom: 5px solid #d84747;
