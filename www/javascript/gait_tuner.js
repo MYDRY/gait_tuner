@@ -3,9 +3,10 @@ function GaitTuner() {
 
 GaitTuner.prototype = {
     judge: function(distance, remainingTime, defaultSpeed) {
-        var walkingTime = distance / defaultSpeed.walk;
-        var joggingTime = distance / defaultSpeed.jog;
-        var runningTime = distance / defaultSpeed.run;
+        console.log(defaultSpeed != null);
+        var walkingTime = distance / defaultSpeed["walk"];
+        var joggingTime = distance / defaultSpeed["jog"];
+        var runningTime = distance / defaultSpeed["run"];
 
         var sec = Math.round((walkingTime % 60) % 60);
         var w_min = Math.floor(walkingTime/ 60) % 60;
