@@ -12,13 +12,19 @@ SpeedDB.prototype = {
         console.warn("Error occured while executing SQL: " + err.code);
     },
 
-    register: function() {
+    submit: function() {
+        var speeds = [];
+        for (var i = 0; i < document["speed-form"].length; ++i) {
+            var speed = document["speed-form"][i].options[document["speed-form"][i].selectedIndex].value;
+            console.log(speed + " [m/s]");
+            speeds.push(speed);
+        }
+        
         this._db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS '+ this._name + ' (walk, jog, run)');
             tx.executeSql('SELECT * FROM ' + this._name, [], function(tx, results) {
                 var len = results.rows.length;
-                tx.executeSql('INSERT INTO ' + this._name + ' (walk, jog, run) VALUES (?, ?, ?)',
-                              [len + 1, name, latlng.lat(), latlng.lng()]);
+                tx.executeSql('INSERT INTO ' + this._name + ' (walk, jog, run) VALUES (?, ?, ?)', speeds);
             }, this.errorCallBack);
         }, this.errorCallBack);
     },
