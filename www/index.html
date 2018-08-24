@@ -101,8 +101,12 @@
       <div id="selector-with-map" class="place-selector active">
         <div id="map" style="width:350hw; height:300px"></div>
         <br><br>
-        <input class="btn btn-danger" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()" ><br><br>
-        <input class="btn btn-danger" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()"><br>
+        <button class="btn btn-danger" type="button" onclick="gm.setStartPosition()">
+          マップ上の地点を<strong> 出発点 </strong>に設定
+        </button><br><br>
+        <button class="btn btn-danger" type="button" onclick="gm.setGoalPosition()">
+          マップ上の地点を<strong> 到着点 </strong>に設定
+        </button><br>
       </div>
       <div id="selector-with-database" class="place-selector" style="display: none;">
         <span>出発地</span>
@@ -120,31 +124,31 @@
              type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
       <br>
       <div id="panel" style="width: 300px;"></div>
-    <script type="text/javascript">
-     var tm = new TimeManager();
-     var gm = new GoogleMap();
-     var pdb = new PlaceDB();
-     pdb.genSelectBox("start", "gm.selectStartPosition");
-     pdb.genSelectBox("goal", "gm.selectGoalPosition");
-     var gt = new GaitTuner();
-     var sdb = new SpeedDB();
-     var hdb = new HistoryDB();
+      <script type="text/javascript">
+       var tm = new TimeManager();
+       var gm = new GoogleMap();
+       var pdb = new PlaceDB();
+       pdb.genSelectBox("start", "gm.selectStartPosition");
+       pdb.genSelectBox("goal", "gm.selectGoalPosition");
+       var gt = new GaitTuner();
+       var sdb = new SpeedDB();
+       var hdb = new HistoryDB();
 
-     function togglePlaceSelector(event, selectorName) {
-         var tabContent = document.getElementsByClassName("place-selector");
-         for (var i = 0; i < tabContent.length; ++i) {
-             tabContent[i].style.display = "none";
-         }
-         var tabLinks = document.getElementsByClassName("tab2_item");
-         for (var i = 0; i < tabLinks.length; ++i) {
-             tabLinks[i].className = tabLinks[i].className.replace(" action", "");
-         }
-         document.getElementById("selector-with-" + selectorName).style.display = "block";
-         event.currentTarget.className += " action";
-     }
-    </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+       function togglePlaceSelector(event, selectorName) {
+           var tabContent = document.getElementsByClassName("place-selector");
+           for (var i = 0; i < tabContent.length; ++i) {
+               tabContent[i].style.display = "none";
+           }
+           var tabLinks = document.getElementsByClassName("tab2_item");
+           for (var i = 0; i < tabLinks.length; ++i) {
+               tabLinks[i].className = tabLinks[i].className.replace(" action", "");
+           }
+           document.getElementById("selector-with-" + selectorName).style.display = "block";
+           event.currentTarget.className += " action";
+       }
+      </script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>
