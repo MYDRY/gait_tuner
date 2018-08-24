@@ -23,6 +23,9 @@
     <!-- speed database -->
     <script type="text/javascript" charset="utf-8" src="javascript/speed_database.js"></script>
 
+    <!-- history database -->
+    <script type="text/javascript" charset="utf-8" src="javascript/history_database.js"></script>
+
     <!-- gait_tuner -->
     <script type="text/javascript" charset="utf-8" src="javascript/gait_tuner.js"></script>
 
@@ -69,7 +72,7 @@
         <h2>歩行速度</h2>
         <a href="speed_configure.html" target="_blank">設定する</a><br>
         
-        <input type="button" value="判定する" onclick="gt.judge(gm.getDistance(), tm.remainingTime, sdb.getSpeeds())">
+        <input type="button" value="判定する" onclick="gt.judge(gm, tm, sdb, hdb)">
         <hr>
         <h2>履歴</h2>
         <a href="history.html" target="_blank">履歴</a>
@@ -91,6 +94,7 @@
        pdb.genSelectBox("goal", "gm.selectGoalPosition");
        var gt = new GaitTuner();
        var sdb = new SpeedDB();
+       var hdb = new HistoryDB();
       </script>
     </ons-page>
   </body>
