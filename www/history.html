@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
+
+    <!-- database -->
+    <script type="text/javascript" charset="utf-8" src="javascript/place_database.js"></script>
+
+    <!-- google map -->
+    <script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/directions/json"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv80XnUNKsbSj5PALekuXX76V90tmyJVU"></script>
+    <script type="text/javascript" charset="utf-8" src="javascript/googlemap.js"></script>
+
+    <!-- time manager -->
+    <script type="text/javascript" charset="utf-8" src="javascript/time_manager.js"></script>
+
+    <!-- speed database -->
+    <script type="text/javascript" charset="utf-8" src="javascript/speed_database.js"></script>
+
+    <!-- gait_tuner -->
+    <script type="text/javascript" charset="utf-8" src="javascript/gait_tuner.js"></script>
+
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+     ons.bootstrap()
+        .controller('HelloController', function() {
+            this.world = 'World';
+        });
+     ons.ready(function() {
+         console.log("Onsen UI is ready!");
+     });
+    </script>
+  </head>
+  <body>
+    <h1>履歴</h1>
+    <a href="index.html" target="_blank">戻る</a>
+    <script>
+    </script>
+  </body>
+</html>
