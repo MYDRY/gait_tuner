@@ -10,6 +10,7 @@ TimeManager.prototype = {
             run:  5.0
         };
         this.remainingTime = 0;
+        this.addTime = 0;
     },
 
     changeSpeedPara: function() {
@@ -31,17 +32,21 @@ TimeManager.prototype = {
         console.log(target_date);
         td = target_date.split("-");
         tmp = target_time.split(":");
-        return new Date(td[0], td[1] - 1, td[2], tmp[0], tmp[1]);
+        return new Date(td[0], td[1]-1, td[2], tmp[0], tmp[1]);
     },
 
-    showTargetTime: function() {
-        var field = document.getElementById("target_time_shower");
-        field.innerHTML = this.getTargetTime();
-        this.calcRemainingTime();
+    addStartTime: function() {
+      this.addTime = document.forms['start_time_form'].start_time.value;
+      console.log(this.addTime);
+      this.calcRemainingTime();
     },
 
 
     calcRemainingTime: function() {
-        this.remainingTime = (this.getTargetTime().getTime() - new Date().getTime()) / 1000;
+      var startDate = new Date();
+        startDate.setMinutes(startDate.getMinutes() + this.addTime);
+        console.log(this.getTargetTime().getMinutes());
+        console.log(startDate.getMinutes());
+        this.remainingTime = (this.getTargetTime().getTime() - startDate.getTime()) / 1000;
     }
 };
