@@ -20,7 +20,8 @@ HistoryDB.prototype = {
             tx.executeSql('SELECT * FROM ' + this._name, [], function(tx, results) {
                 tx.executeSql('INSERT INTO ' + this._name +
                               ' (origin, dest, targettime, timestamp) VALUES (?, ?, ?, ?)',
-                              [origin, dest, targetTime, new Date]);
+                              [origin.lat() + ',' + origin.lng(),
+                               dest.lat() + ',' + dest.lng(), targetTime, new Date]);
             }, this.errorCallBack);
         }, this.errorCallBack);
         console.log(origin);
@@ -46,6 +47,7 @@ HistoryDB.prototype = {
         var htmlText = '';
         for (var i = 0; i < len; ++i) {
             var originLatlng = results.rows.item(i).origin.split(',');
+            console.log(results.rows.item(i).origin);
             var destLatlng = results.rows.item(i).dest.split(',');
             var targetTime = new Date(results.rows.item(i).targettime);
             var timeStamp = new Date(results.rows.item(i).timestamp);
