@@ -51,7 +51,7 @@ SpeedDB.prototype = {
         field.innerHTML = "<br>";
     },
 
-    genSelectBox: function(pointName, onChangeFunc) {
+    genSelectBox: function(name, onChangeFunc) {
         this._db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS ' + this._name + ' (id unique, name, lat, lng)');
             tx.executeSql('SELECT * FROM ' + this._name, [], function(tx, results) {
@@ -71,5 +71,19 @@ SpeedDB.prototype = {
                 field.innerHTML = htmlText;
             }, this.errorCallBack);
         }, this.errorCallBack);        
+    },
+
+    addSpeedOptions: function(mode) {
+        var speedOptions = { "walk": ["0.8", "1.0", "1.2"],
+                             "jog":  ["1.5", "2.0", "2,5"],
+                             "run":  ["5.0", "6.0", "7.0"] };
+        var selbox = document.getElementById(mode + "-speed-selbox");
+        var options = selbox.options;
+        options.length = 0;
+        console.log("HELLo");
+        for (var i = 0; i < speedOptions[mode].length; ++i) {
+            options[options.length] =
+                new Option(speedOptions[mode][i] + " [m/s]", speedOptions[mode][i]);
+        }
     }
 };
