@@ -1,5 +1,15 @@
 .tabs {
   margin-top: 50px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+  position:fixed;
+}
+
+.tabs_1 {
+  margin-top: 50px;
   padding-bottom: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
