@@ -48,18 +48,17 @@
     </script>
   </head>
   <body>
-    <ons-page ng-controller="HelloController as hello">
-      <!--
-      <div class="tabs">
-        <input id="home" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="home"><a class="action" href="index.html">判定</a></label>
-        <input id="regster" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="register"><a href="place_register.html">地点登録</a></label>
-        <input id="contact" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
-        <input id="config" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
-      </div>
+    <!--
+         <div class="tabs">
+         <input id="home" type="radio" name="tab_item" checked>
+         <label class="tab_item" for="home"><a class="action" href="index.html">判定</a></label>
+         <input id="regster" type="radio" name="tab_item" checked>
+         <label class="tab_item" for="register"><a href="place_register.html">地点登録</a></label>
+         <input id="contact" type="radio" name="tab_item" checked>
+         <label class="tab_item" for="contact"><a href="history.html">履歴</a></label>
+         <input id="config" type="radio" name="tab_item" checked>
+         <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
+         </div>
     -->
 
     <div class="tabs">
@@ -121,30 +120,29 @@
       <br>
       <div id="panel" style="width: 300px;"></div>
     </div>
-      <script type="text/javascript">
-       var tm = new TimeManager();
-       var gm = new GoogleMap();
-       var pdb = new PlaceDB();
-       pdb.genSelectBox("start", "gm.selectStartPosition");
-       pdb.genSelectBox("goal", "gm.selectGoalPosition");
-       var gt = new GaitTuner();
-       var sdb = new SpeedDB();
-       var hdb = new HistoryDB();
+    <script type="text/javascript">
+     var tm = new TimeManager();
+     var gm = new GoogleMap();
+     var pdb = new PlaceDB();
+     pdb.genSelectBox("start", "gm.selectStartPosition");
+     pdb.genSelectBox("goal", "gm.selectGoalPosition");
+     var gt = new GaitTuner();
+     var sdb = new SpeedDB();
+     var hdb = new HistoryDB();
 
-       function togglePlaceSelector(event, selectorName) {
-           var tabContent = document.getElementsByClassName("place-selector");
-           for (var i = 0; i < tabContent.length; ++i) {
-               tabContent[i].style.display = "none";
-           }
-           var tabLinks = document.getElementsByClassName("tab2_item");
-           for (var i = 0; i < tabLinks.length; ++i) {
-               tabLinks[i].className = tabLinks[i].className.replace(" action", "");
-           }
-           document.getElementById("selector-with-" + selectorName).style.display = "block";
-           event.currentTarget.className += " action";
-       }
-      </script>
-    </ons-page>
+     function togglePlaceSelector(event, selectorName) {
+         var tabContent = document.getElementsByClassName("place-selector");
+         for (var i = 0; i < tabContent.length; ++i) {
+             tabContent[i].style.display = "none";
+         }
+         var tabLinks = document.getElementsByClassName("tab2_item");
+         for (var i = 0; i < tabLinks.length; ++i) {
+             tabLinks[i].className = tabLinks[i].className.replace(" action", "");
+         }
+         document.getElementById("selector-with-" + selectorName).style.display = "block";
+         event.currentTarget.className += " action";
+     }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
