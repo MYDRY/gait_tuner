@@ -40,16 +40,16 @@ HistoryDB.prototype = {
         var field = document.getElementById("historylist");
         var len = results.rows.length;
         console.log("data num = " + len);
-        var htmlText = "";
+        var htmlText = '';
         for (var i = 0; i < len; ++i) {
             htmlText +=
-                "==========================================================<br>" + 
-                "　origin: " + results.rows.item(i).origin + "<br>" + 
-                "　dest: " + results.rows.item(i).dest + "<br>" + 
-                "　targettime: " + results.rows.item(i).targettime + "<br>" +
-                "　timestamp: "+ results.rows.item(i).timestamp + "<br>" + 
-                "==========================================================<br>";
+                '<div style="border: solid 3px lavender; margin: 10px; width: 80%; float: center;">' + 
+                '出発点: ' + results.rows.item(i).origin + '<br>' + 
+                '到着点: ' + results.rows.item(i).dest + '<br>' + 
+                '目標時刻: ' + results.rows.item(i).targettime + '<br>' +
+                '入力時刻: '+ results.rows.item(i).timestamp.getHour() + '<br>' + 
+                '</div>';
         }
-        field.innerHTML = htmlText;
+        field.innerHTML = htmlText + '</div>';
     }
 };
