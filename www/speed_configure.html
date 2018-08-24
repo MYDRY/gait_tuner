@@ -17,6 +17,12 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv80XnUNKsbSj5PALekuXX76V90tmyJVU"></script>
     <script type="text/javascript" charset="utf-8" src="javascript/googlemap.js"></script>
 
+    <!-- time manager -->
+    <script type="text/javascript" charset="utf-8" src="javascript/time_manager.js"></script>
+
+    <!-- speed database -->
+    <script type="text/javascript" charset="utf-8" src="javascript/speed_database.js"></script>
+    
     <!-- gait_tuner -->
     <script type="text/javascript" charset="utf-8" src="javascript/gait_tuner.js"></script>
 
@@ -35,26 +41,30 @@
     </script>
   </head>
   <body>
-    <div class="tabs">
-      <input id="home" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="home"><a href="index.html">Home</a></label>
-      <input id="regster" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="regster"><a class="action" href="place_register.html">Register</a></label>
-      <input id="contact" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="contact"><a href="#">Contact</a></label>
-      <input id="config" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="config"><a href="setting.html">Config</a></label>
-    </div>
-    <hr>
+    <h1>速度設定</h1>
 
-    <h3>地点登録</h3>
-    <div id="map" style="width:350hw; height:300px"></div>
-    <input class="set_btn" type="button" value="この地点を登録する" onclick="pdb.register(gm)">
-    <input class="check_btn" type="button" value="地点一覧" onclick="pdb.show()">
-    <div id="placelist"></div>
-    <script>
-      var gm  = new GoogleMap();
-      var pdb = new PlaceDB();
-    </script>
+    <form name="speed-form">
+      <h2>歩きの速さ</h2>
+      <select name="walk-speed-selbox" id="walk-speed-selbox">
+      </select>
+
+      <h2>ジョギングの速さ</h2>
+      <select name="jog-speed-selbox" id="jog-speed-selbox">
+      </select>
+      
+      <h2>走る速さ</h2>
+      <select name="run-speed-selbox" id="run-speed-selbox">
+      </select>
+    </form>
+    <input type="button" value="決定する" onclick="sdb.submit()">
+    <div id="speedlist"></div>
+    <a href="index.html" target="_blank">戻る</a>
   </body>
+  <script>
+   var sdb = new SpeedDB();
+   sdb.addSpeedOptions("walk");
+   sdb.addSpeedOptions("jog");
+   sdb.addSpeedOptions("run");
+   sdb.show();
+  </script>
 </html>

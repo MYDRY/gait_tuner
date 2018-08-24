@@ -20,6 +20,9 @@
     <!-- time manager -->
     <script type="text/javascript" charset="utf-8" src="javascript/time_manager.js"></script>
 
+    <!-- speed database -->
+    <script type="text/javascript" charset="utf-8" src="javascript/speed_database.js"></script>
+
     <!-- gait_tuner -->
     <script type="text/javascript" charset="utf-8" src="javascript/gait_tuner.js"></script>
 
@@ -27,6 +30,7 @@
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
+
     <script>
      ons.bootstrap()
         .controller('HelloController', function() {
@@ -89,19 +93,47 @@
         <h2>地点登録</h2>
         <a href="place_register.html" target="_blanck">place_register</a>
         <div id="panel" style="width: 300px;"></div>
+      <div class="tabs">
+        <input id="home" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="home"><a class="action" href="index.html">Home</a></label>
+        <input id="regster" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="regster"><a href="place_register.html">Register</a></label>
+        <input id="contact" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="contact"><a href="#">Contact</a></label>
+        <input id="config" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="config"><a href="setting.html">Config</a></label>
       </div>
+      <hr>
+      <div id="map" style="width:350hw; height:300px"></div>
+      <br>
+      <span>出発地</span>
+      <div id="startpointselector"></div>
+      <input class="set_btn" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()">
+      <br>
+      <span>目的地</span>
+      <div id="goalpointselector"></div>
+      <input class="set_btn" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()">
+      <br>
+      <input class="check_btn" type="button" value="経路を検索" onclick="gm.getRoute()">
+      <br>
+      <form name="target_time_form">
+        <span>目標時間</span>
+        <input type="date" name="target_date" onchange="tm.showTargetTime()">
+        <input type="time" name="target_time" onchange="tm.showTargetTime()">
+      </form>
+      <div id="target_time_shower"></div>
+      <br>
+      <input class="check_btn" type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
+      <br>
+      <div id="panel" style="width: 300px;"></div>
       <script type="text/javascript">
-       setInterval(clock, 1000);
-       var date_field = document.getElementById("time")
-       var tm = new TimeManager();
-       function clock(){
-           date_field.innerHTML = tm.getCurrentTime();
-       }
-       var gm = new GoogleMap();
-       var pdb = new PlaceDB();
-       pdb.genSelectBox("start", "gm.selectStartPosition");
-       pdb.genSelectBox("goal", "gm.selectGoalPosition");
+        var tm = new TimeManager();
+        var gm = new GoogleMap();
+        var pdb = new PlaceDB();
+        pdb.genSelectBox("start", "gm.selectStartPosition");
+        pdb.genSelectBox("goal", "gm.selectGoalPosition");
        var gt = new GaitTuner();
+       var sdb = new SpeedDB();
       </script>
     </ons-page>
   </body>

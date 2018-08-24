@@ -36,7 +36,7 @@ GoogleMap.prototype = {
             label: "到"
         });
         this.goalMarker.setMap(null);
-        
+
         this.latestResponse = null;
         this.currentPos = null;
         this.startPosition = null;
@@ -87,7 +87,7 @@ GoogleMap.prototype = {
         console.log("The distance is " + distance + " [m].");
         return distance;
     },
-    
+
     putStartMarker: function(pos) {
         this.startMarker.setPosition(pos);
         this.startMarker.setMap(this.map);
@@ -101,7 +101,7 @@ GoogleMap.prototype = {
         this.directionsDisplay.setMap(null);
         alert("到着点を設定しました。");
     },
-    
+
     setStartPosition: function() {
         this.startPosition = this.map.getBounds().getCenter();
         this.putStartMarker(this.startPosition);
@@ -122,7 +122,7 @@ GoogleMap.prototype = {
         var latlngStrings = this.goalPosition.split(",");
         this.putGoalMarker({lat: parseFloat(latlngStrings[0]), lng: parseFloat(latlngStrings[1])});
     },
-    
+
     getRoute: function() {
         if (this.startPosition == null) {
             alert("出発点を設定してください。");
