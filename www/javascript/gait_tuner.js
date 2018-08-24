@@ -2,8 +2,10 @@ function GaitTuner() {
 }
 
 GaitTuner.prototype = {
-    judge: function(distance, remainingTime, defaultSpeed) {
-        console.log(defaultSpeed != null);
+    judge: function(gm, tm, sdb, hdb) {
+        var distance = gm.getDistance();
+        var remainingTime = tm.remainingTime;
+        var defaultSpeed = sdb.getSpeeds();
         var walkingTime = distance / defaultSpeed["walk"];
         var joggingTime = distance / defaultSpeed["jog"];
         var runningTime = distance / defaultSpeed["run"];
@@ -33,6 +35,8 @@ GaitTuner.prototype = {
         console.log("joggingTime: " + joggingTime);
         console.log("runningTime: " + runningTime);
 
+        hdb.register(gm, tm.getTargetTime());
+        
         if (walkingTime <= remainingTime) {
             alert("歩いても間に合うよ\n" + "到着予想時刻: "+ walk.getHours() + ":" + ("0"+(walk.getMinutes())).slice(-2) + "\nちなみに・・・"
               + "\nジョギングしたら\n"　+ "到着予想時刻: "+ jog.getHours() + ":" + ("0"+(jog.getMinutes())).slice(-2)
