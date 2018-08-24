@@ -72,8 +72,8 @@
       <br>
 
       <div class="tabs">
-        <button class="tab_item" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
-        <button class="tab_item" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
+        <button class="tab_item action" style="width: 50%;" onclick="togglePlaceSelector(event, 'map')">地図から探す</button>
+        <button class="tab_item" style="width: 50%;" onclick="togglePlaceSelector(event, 'database')">登録地から探す</button>
       </div>
       <br>
       <div id="selector-with-map" class="place-selector active">
@@ -118,10 +118,10 @@
            }
            var tabLinks = document.getElementsByClassName("tab_item");
            for (var i = 0; i < tabLinks.length; ++i) {
-               tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+               tabLinks[i].className = tabLinks[i].className.replace(" action", "");
            }
            document.getElementById("selector-with-" + selectorName).style.display = "block";
-           event.currentTarget.className += " active";
+           event.currentTarget.className += " action";
        }
       </script>
     </ons-page>
