@@ -50,12 +50,11 @@ PlaceDB.prototype = {
         var htmlText = "";
         for (var i = 0; i < len; ++i) {
             htmlText +=
-                "==========================================================<br>" +
-                "　id: " + results.rows.item(i).id + "<br>" +
-                "　name: " + results.rows.item(i).name + "<br>" +
-                "　lat: " + results.rows.item(i).lat + "<br>" +
-                "　lng: "+ results.rows.item(i).lng + "<br>" +
-                "==========================================================<br>";
+                '<div style="border: solid 3px lavender; margin: 10px; padding-left: 10%; float: center;">' +
+                '　地点名: ' + results.rows.item(i).name + '<br>' +
+                '　緯度: ' + results.rows.item(i).lat + '<br>' +
+                '　経度: '+ results.rows.item(i).lng + '<br>' +
+                '</div>';
         }
         field.innerHTML = htmlText;
     },
