@@ -25,7 +25,7 @@
 
     <!-- history database -->
     <script type="text/javascript" charset="utf-8" src="javascript/history_database.js"></script>
-    
+
     <!-- gait_tuner -->
     <script type="text/javascript" charset="utf-8" src="javascript/gait_tuner.js"></script>
 
@@ -44,6 +44,16 @@
     </script>
   </head>
   <body>
+    <div class="tabs">
+      <input id="home" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="home"><a href="index.html">判定</a></label>
+      <input id="regster" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="regster"><a href="place_register.html">地点登録</a></label>
+      <input id="contact" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="contact"><a class="action" href="history.html">履歴</a></label>
+      <input id="config" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
+    </div>
     <h1>履歴</h1>
     <div id="historylist"></div>
     <a href="index.html" target="_blank">戻る</a>
