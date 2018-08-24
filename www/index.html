@@ -40,37 +40,39 @@
   </head>
   <body>
     <ons-page ng-controller="HelloController as hello">
-      <div class="content" style="margin: 10px;">
-        <ul>
-          <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="place_register.html">地点登録</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="setting.html">設定</a></li>
-        </ul>
-
-        <div id="map" style="width:350hw; height:300px"></div>
-        <h3>出発地</h3>
-        <div id="startpointselector"></div>
-        <input type="button" value="出発点に設定" onclick="gm.setStartPosition()">
-        <h3>目的地</h3>
-        <div id="goalpointselector"></div>
-        <input type="button" value="到着点に設定" onclick="gm.setGoalPosition()">
-        <br>
-        <input type="button" value="経路を検索" onclick="gm.getRoute()">
-
-        <hr>
-        <h2>目標時間</h2>
-        <form name="target_time_form">
-          <input type="date" name="target_date" onchange="tm.showTargetTime()">
-          <input type="time" name="target_time" onchange="tm.showTargetTime()">
-        </form>
-        <div id="target_time_shower"></div>
-        <hr>
-        <input type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
-        <hr>
-
-        <div id="panel" style="width: 300px;"></div>
+      <div class="tabs">
+        <input id="home" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="home"><a class="action" href="index.html">Home</a></label>
+        <input id="regster" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="regster"><a href="place_register.html">Register</a></label>
+        <input id="contact" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="contact"><a href="#">Contact</a></label>
+        <input id="config" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="config"><a href="setting.html">Config</a></label>
       </div>
+      <hr>
+      <div id="map" style="width:350hw; height:300px"></div>
+      <br>
+      <span>出発地</span>
+      <div id="startpointselector"></div>
+      <input class="set_btn" type="button" value="マップ上の地点を出発点に設定" onclick="gm.setStartPosition()">
+      <br>
+      <span>目的地</span>
+      <div id="goalpointselector"></div>
+      <input class="set_btn" type="button" value="マップ上の地点を目的地に設定" onclick="gm.setGoalPosition()">
+      <br>
+      <input class="check_btn" type="button" value="経路を検索" onclick="gm.getRoute()">
+      <br>
+      <form name="target_time_form">
+        <span>目標時間</span>
+        <input type="date" name="target_date" onchange="tm.showTargetTime()">
+        <input type="time" name="target_time" onchange="tm.showTargetTime()">
+      </form>
+      <div id="target_time_shower"></div>
+      <br>
+      <input class="check_btn" type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
+      <br>
+      <div id="panel" style="width: 300px;"></div>
       <script type="text/javascript">
         var tm = new TimeManager();
         var gm = new GoogleMap();

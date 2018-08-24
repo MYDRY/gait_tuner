@@ -39,20 +39,25 @@
   </head>
   <body>
     <ons-page ng-controller="HelloController as hello">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="place_register.html">地点登録</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a class="active" href="setting.html">設定</a></li>
-      </ul>
-        <h2>歩行速度</h2>
-        <form name="speedparaform">
-          <select name="speedpara" onChange="tm.changeSpeedPara()">
-            <option value="">平均</option>
-            <option value="10.0">10m/s</option>
-            <option value="100.0">100m/s</option>
-          </select>
-        </form>
+      <div class="tabs">
+        <input id="home" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="home"><a href="index.html">Home</a></label>
+        <input id="regster" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="regster"><a href="place_register.html">Register</a></label>
+        <input id="contact" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="contact"><a href="#">Contact</a></label>
+        <input id="config" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="config"><a class="action" href="setting.html">Config</a></label>
+      </div>
+      <hr>
+      <h2>歩行速度</h2>
+      <form name="speedparaform">
+        <select name="speedpara" onChange="tm.changeSpeedPara()">
+          <option value="">平均</option>
+          <option value="10.0">10m/s</option>
+          <option value="100.0">100m/s</option>
+        </select>
+      </form>
       <script type="text/javascript">
        var tm = new TimeManager();
        </script>
