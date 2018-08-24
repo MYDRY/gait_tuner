@@ -20,6 +20,9 @@
     <!-- time manager -->
     <script type="text/javascript" charset="utf-8" src="javascript/time_manager.js"></script>
 
+    <!-- speed database -->
+    <script type="text/javascript" charset="utf-8" src="javascript/speed_database.js"></script>
+
     <!-- gait_tuner -->
     <script type="text/javascript" charset="utf-8" src="javascript/gait_tuner.js"></script>
 
@@ -79,6 +82,8 @@
         var pdb = new PlaceDB();
         pdb.genSelectBox("start", "gm.selectStartPosition");
         pdb.genSelectBox("goal", "gm.selectGoalPosition");
+       var gt = new GaitTuner();
+       var sdb = new SpeedDB();
       </script>
     </ons-page>
   </body>

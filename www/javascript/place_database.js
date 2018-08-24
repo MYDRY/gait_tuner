@@ -75,7 +75,8 @@ PlaceDB.prototype = {
                 var htmlText =
                     '<div id="' + pointName + 'pointselector">' + 
                     '<form name="' + pointName + 'pointform">' + 
-                    '<select name="' + pointName + 'point" onChange="' + onChangeFunc + '()">';
+                    '<select name="' + pointName + 'point" required="true" onChange="' + onChangeFunc + '()">' +
+                    '<option value="" >選択してください</option>';
                 for (var i = 0; i < len; ++i) {
                     var pos = results.rows.item(i).lat + "," +  results.rows.item(i).lng;
                     htmlText += '<option value="' + pos + '">' + results.rows.item(i).name + '</option>';
