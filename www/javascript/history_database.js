@@ -7,11 +7,11 @@ HistoryDB.prototype = {
         this._name = "HistoryDB";
         this._db = window.openDatabase(this._name, "1.0", this._name, 100);
     },
-    
+
     errorCallBack: function(err) {
         console.warn("Error occured while executing SQL: " + err.code);
     },
-    
+
     register: function(gm, targetTime) {
         var origin = gm.startPosition;
         var dest   = gm.goalPosition;
@@ -29,7 +29,7 @@ HistoryDB.prototype = {
         console.log(targetTime);
         console.log(new Date());
     },
-    
+
     show: function() {
         this._db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS NameTable (id unique, name, lat, lng)');
@@ -52,13 +52,13 @@ HistoryDB.prototype = {
             var targetTime = new Date(results.rows.item(i).targettime);
             var timeStamp = new Date(results.rows.item(i).timestamp);
             htmlText +=
-                '<div style="border: solid 3px lavender; margin: 10px; width: 80%; float: center;">' + 
-                '出発点: 緯度=' + round(originLatlng[0]) + ', 経度=' + round(originLatlng[1]) + '<br>' + 
-                '到着点: 緯度=' + round(destLatlng[0]) + ', 経度=' + round(destLatlng[1]) + '<br>' + 
-                '目標時刻: ' + targetTime.getHours() + ':' + targetTime.getMinutes()+ '<br>' +
-                '入力日時: '+ timeStamp.getFullYear()  + '年 '
+                '<div style="border: solid 3px lavender; margin: 10px; padding-left: 10%; float: center;">' +
+                '・出発点: 緯度=' + round(originLatlng[0]) + ', 経度=' + round(originLatlng[1]) + '<br>' +
+                '・到着点: 緯度=' + round(destLatlng[0]) + ', 経度=' + round(destLatlng[1]) + '<br>' +
+                '・目標時刻: ' + targetTime.getHours() + ':' + targetTime.getMinutes()+ '<br>' +
+                '・入力日時: '+ timeStamp.getFullYear()  + '年 '
                 + timeStamp.getMonth() + '月 '
-                + timeStamp.getDay()+ '日 <br>' + 
+                + timeStamp.getDay()+ '日 <br>' +
                 '</div>';
         }
         var field = document.getElementById("historylist");
