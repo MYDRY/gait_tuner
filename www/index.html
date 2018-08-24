@@ -57,6 +57,18 @@
         <label class="tab_item" for="config"><a href="speed_configure.html">設定</a></label>
       </div>
       <hr>
+      <span>出発時間</span>
+      <form name="start_time_form">
+        <select name="start_time" onChange="tm.addStartTime()">
+          <option value="0">現在時刻</option>
+          <option value="10">１０分後</option>
+          <option value="20">２０分後</option>
+          <option value="30">３０分後</option>
+          <option value="40">４０分後</option>
+          <option value="50">５０分後</option>
+          <option value="60">６０分後</option>
+        </select>
+      </form>
       <div id="map" style="width:350hw; height:300px"></div>
       <br>
       <span>出発地</span>
