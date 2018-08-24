@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
-
     <script>
      ons.bootstrap()
         .controller('HelloController', function() {
@@ -40,44 +39,23 @@
   </head>
   <body>
     <ons-page ng-controller="HelloController as hello">
-      <div class="content" style="margin: 10px;">
-        <ul>
-          <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="place_register.html">地点登録</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="setting.html">設定</a></li>
-        </ul>
-
-        <div id="map" style="width:350hw; height:300px"></div>
-        <h3>出発地</h3>
-        <div id="startpointselector"></div>
-        <input type="button" value="出発点に設定" onclick="gm.setStartPosition()">
-        <h3>目的地</h3>
-        <div id="goalpointselector"></div>
-        <input type="button" value="到着点に設定" onclick="gm.setGoalPosition()">
-        <br>
-        <input type="button" value="経路を検索" onclick="gm.getRoute()">
-
-        <hr>
-        <h2>目標時間</h2>
-        <form name="target_time_form">
-          <input type="date" name="target_date" onchange="tm.showTargetTime()">
-          <input type="time" name="target_time" onChange="tm.showTargetTime()">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="place_register.html">地点登録</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="active" href="setting.html">設定</a></li>
+      </ul>
+        <h2>歩行速度</h2>
+        <form name="speedparaform">
+          <select name="speedpara" onChange="tm.changeSpeedPara()">
+            <option value="">平均</option>
+            <option value="10.0">10m/s</option>
+            <option value="100.0">100m/s</option>
+          </select>
         </form>
-        <div id="target_time_shower"></div>
-        <hr>
-        <input type="button" value="判定する" onclick="judge(gm.getDistance(), tm.remainingTime, tm.defaultSpeed)">
-        <hr>
-
-        <div id="panel" style="width: 300px;"></div>
-      </div>
       <script type="text/javascript">
-        var tm = new TimeManager();
-        var gm = new GoogleMap();
-        var pdb = new PlaceDB();
-        pdb.genSelectBox("start", "gm.selectStartPosition");
-        pdb.genSelectBox("goal", "gm.selectGoalPosition");
-      </script>
+       var tm = new TimeManager();
+       </script>
     </ons-page>
   </body>
 </html>
