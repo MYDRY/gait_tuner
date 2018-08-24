@@ -113,14 +113,17 @@ GoogleMap.prototype = {
     },
 
     selectStartPosition: function() {
-        this.startPosition = document.startpointform.startpoint.options[document.startpointform.startpoint.selectedIndex].value;
-        var latlngStrings = this.startPosition.split(",");
-        this.putStartMarker({lat: parseFloat(latlngStrings[0]), lng: parseFloat(latlngStrings[1])});
+        var startpointSelector = document.startpointform.startpoint;
+        var latlngStrings = startpointSelector.options[startpointSelector.selectedIndex].value.split(",");
+        this.startPosition = new google.maps.LatLng(latlngStrings[0], latlngStrings[1]);
+        this.putStartMarker(this.startPosition);
     },
+
     selectGoalPosition: function() {
-        this.goalPosition = document.goalpointform.goalpoint.options[document.goalpointform.goalpoint.selectedIndex].value;
-        var latlngStrings = this.goalPosition.split(",");
-        this.putGoalMarker({lat: parseFloat(latlngStrings[0]), lng: parseFloat(latlngStrings[1])});
+        var goalpointSelector = document.goalpointform.goalpoint;
+        var latlngStrings = goalpointSelector.options[goalpointSelector.selectedIndex].value.split(",");
+        this.goalPosition = new google.maps.LatLng(latlngStrings[0], latlngStrings[1]);
+        this.putGoalMarker(this.goalPosition);
     },
 
     getRoute: function() {
