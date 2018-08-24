@@ -5,9 +5,9 @@ function SpeedDB() {
 SpeedDB.prototype = {
     init: function() {
         this._name = "SpeedDB";
+        this._db = window.openDatabase(this._name, "1.0", this._name, 100);
         this.speeds = {"walk": null, "jog": null, "run": null};
         this.setSpeeds();
-        this._db = window.openDatabase(this._name, "1.0", this._name, 100);
     },
     
     errorCallBack: function(err) {
@@ -62,7 +62,7 @@ SpeedDB.prototype = {
             tx.executeSql('SELECT * FROM ' + this._name, [], function(tx, results) {
                 var len = results.rows.length;
                 if (len == 1) {
-                    for (key in speeds) {
+                    for (key in self.speeds) {
                         self.speeds[key] = parseFloat(results.rows.item(0)[key]);
                     }
                 } else {
