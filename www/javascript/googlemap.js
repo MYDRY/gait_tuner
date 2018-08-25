@@ -45,7 +45,7 @@ GoogleMap.prototype = {
 
     setInitialPosition: function() {
         var self = this;
-        var defaultPos = new google.maps.LatLng(35.66572, 139.73100); // TOKYO
+        var defaultPos = new google.maps.LatLng(33.5932706, 130.4041151); // AQUA HAKATA
         navigator.geolocation.getCurrentPosition(function(pos) {
             console.log("Success to get current position.");
             self.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
