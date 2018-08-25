@@ -105,11 +105,17 @@ GoogleMap.prototype = {
     setStartPosition: function() {
         this.startPosition = this.map.getBounds().getCenter();
         this.putStartMarker(this.startPosition);
+        if (this.goalPosition != null) {
+            this.getRoute();
+        }
     },
 
     setGoalPosition: function() {
         this.goalPosition = this.map.getBounds().getCenter();
         this.putGoalMarker(this.goalPosition);
+        if (this.startPosition != null) {
+            this.getRoute();
+        }
     },
 
     selectStartPosition: function() {
@@ -117,6 +123,9 @@ GoogleMap.prototype = {
         var latlngStrings = startpointSelector.options[startpointSelector.selectedIndex].value.split(",");
         this.startPosition = new google.maps.LatLng(latlngStrings[0], latlngStrings[1]);
         this.putStartMarker(this.startPosition);
+        if (this.goalPosition != null) {
+            this.getRoute();
+        }
     },
 
     selectGoalPosition: function() {
@@ -124,6 +133,9 @@ GoogleMap.prototype = {
         var latlngStrings = goalpointSelector.options[goalpointSelector.selectedIndex].value.split(",");
         this.goalPosition = new google.maps.LatLng(latlngStrings[0], latlngStrings[1]);
         this.putGoalMarker(this.goalPosition);
+        if (this.startPosition != null) {
+            this.getRoute();
+        }
     },
 
     getRoute: function() {
