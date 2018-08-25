@@ -48,5 +48,17 @@ TimeManager.prototype = {
         console.log(this.getTargetTime().getMinutes());
         console.log(startDate.getMinutes());
         this.remainingTime = (this.getTargetTime().getTime() - startDate.getTime()) / 1000;
+    },
+
+    setDefaultTargetTime: function() {
+        var currentDate = new Date();
+        var y0 = ("0000" + (currentDate.getFullYear())).slice(-4);
+        var m0 = ("00"   + (currentDate.getMonth() + 1)).slice(-2);
+        var d0 = ("00"   + (currentDate.getDate())).slice(-2);
+        var dateString = y0 + '-' + m0 + '-' + d0;
+        var timeString = this.getCurrentTime();
+        var form = document.forms['target_time_form'];
+        form.target_date.value = dateString;
+        form.target_time.value = timeString;        
     }
 };
