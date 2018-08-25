@@ -36,28 +36,34 @@ GaitTuner.prototype = {
         console.log("runningTime: " + runningTime);
 
         hdb.register(gm, tm.getTargetTime());
-        
+
+        var resultText = '<div style="text-align: left; float: left;">';
         if (walkingTime <= remainingTime) {
-            alert("歩いても間に合うよ\n" + "到着予想時刻: "+ walk.getHours() + ":" + ("0"+(walk.getMinutes())).slice(-2) + "\nちなみに・・・"
-              + "\nジョギングしたら\n"　+ "到着予想時刻: "+ jog.getHours() + ":" + ("0"+(jog.getMinutes())).slice(-2)
-              + "\nダッシュしたら\n"　+ "到着予想時刻: "+ run.getHours() + ":" + ("0"+(run.getMinutes())).slice(-2)
-            );
+            resultText = '歩いても間に合うよ<br>' +
+                '到着予想時刻: '+ walk.getHours() + ':' + ('0'+(walk.getMinutes())).slice(-2) + '<br>' + 
+                'ちなみに・・・<br>' +
+                'ジョギングしたら<br>'　+ '到着予想時刻: '+ jog.getHours() + ':' + ('0'+(jog.getMinutes())).slice(-2) + '<br>' + 
+                'ダッシュしたら<br>'　+ '到着予想時刻: '+ run.getHours() + ':' + ('0'+(run.getMinutes())).slice(-2);
         } else if (joggingTime <= remainingTime) {
-            alert("ジョギングすれば間に合うよ\n" + "到着予想時刻: "+ jog.getHours() + ":" + ("0"+(jog.getMinutes())).slice(-2) + "\nちなみに・・・"
-            + "\nダッシュしたら\n"　+ "到着予想時刻: "+ run.getHours() + ":" + ("0"+(run.getMinutes())).slice(-2)
-            + "\n（遅刻）歩いたら\n"　+ "到着予想時刻: "+ walk.getHours() + ":" + ("0"+(walk.getMinutes())).slice(-2)
-          );
+            resultText = 'ジョギングすれば間に合うよ<br>' +
+                '到着予想時刻: '+ jog.getHours() + ':' + ('0'+(jog.getMinutes())).slice(-2) + '<br>' +
+                'ちなみに・・・<br>' + 
+                'ダッシュしたら<br>'　+ '到着予想時刻: '+ run.getHours() + ':' + ('0'+(run.getMinutes())).slice(-2) + '<br>' + 
+                '（遅刻）歩いたら<br>'　+ '到着予想時刻: '+ walk.getHours() + ':' + ('0'+(walk.getMinutes())).slice(-2);
         } else if (runningTime <= remainingTime) {
-            alert("ダッシュすれば間に合うよ\n" + "到着予想時刻: "+ run.getHours() + ":" + ("0"+(run.getMinutes())).slice(-2) + "\nちなみに・・・"
-            + "\n（遅刻）ジョギングしたら\n"　+ "到着予想時刻: "+ jog.getHours() + ":" + ("0"+(jog.getMinutes())).slice(-2)
-            + "\n（遅刻）歩いたら\n"　+ "到着予想時刻: "+ walk.getHours() + ":" + ("0"+(walk.getMinutes())).slice(-2)
-          );
+            resultText = 'ダッシュすれば間に合うよ<br>' +
+                '到着予想時刻: '+ run.getHours() + ':' + ('0'+(run.getMinutes())).slice(-2) + '<br>' +
+                'ちなみに・・・<br>' + 
+                '（遅刻）ジョギングしたら<br>'　+ '到着予想時刻: '+ jog.getHours() + ':' + ('0'+(jog.getMinutes())).slice(-2) + '<br>' + 
+                '（遅刻）歩いたら<br>'　+ '到着予想時刻: '+ walk.getHours() + ':' + ('0'+(walk.getMinutes())).slice(-2);
         } else {
-            alert("ダッシュしても間に合わないよ\n＼(^o^)／" + "ちなみに・・・\n"
-              + "ダッシュしたら\n" + "到着予想時刻: "+ run.getHours() + ":" + ("0"+(run.getMinutes())).slice(-2)
-              + "\n（遅刻)ジョギングしたら\n"　+ "到着予想時刻: "+ jog.getHours() + ":" + ("0"+(jog.getMinutes())).slice(-2)
-              + "\n（遅刻）歩いたら\n"　+ "到着予想時刻: "+ walk.getHours() + ":" + ("0"+(walk.getMinutes())).slice(-2)
-          );
+            resultText = 'ダッシュしても間に合わないよ＼(^o^)／<br>' +
+                'ちなみに・・・<br>' +
+                'ダッシュしたら<br>' + '到着予想時刻: '+ run.getHours() + ':' + ('0'+(run.getMinutes())).slice(-2) + '<br>' +
+                '（遅刻)ジョギングしたら<br>'　+ '到着予想時刻: '+ jog.getHours() + ':' + ('0'+(jog.getMinutes())).slice(-2) + '<br>' +
+                '（遅刻）歩いたら\n'　+ '到着予想時刻: '+ walk.getHours() + ':' + ('0'+(walk.getMinutes())).slice(-2);
         }
+        var resultField = document.getElementById("result");
+        resultField.innerHTML = resultText;
     }
 };
